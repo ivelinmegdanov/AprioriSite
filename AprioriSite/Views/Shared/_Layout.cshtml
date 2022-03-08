@@ -10,101 +10,434 @@
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
 	<!-- Theme style -->
-	<link rel="stylesheet" href="~/css/adminlte.min.css" />
 	<link rel="stylesheet" href="~/plugins/toastr/toastr.min.css" />
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<!-- new css for template-->
+	<link rel="stylesheet" href="~/css/style.css">
+
 	@await RenderSectionAsync("Head", false)
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
-	<div class="wrapper">
+<body>
+	@RenderBody()
+	<partial name="_MainMenu" />
 
-		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-		</nav>
-		<!-- /.navbar -->
-		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-dark-primary elevation-4">
-			<!-- Brand Logo -->
-			<a href="index3.html" class="brand-link">
-				<img src="~/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-				<span class="brand-text font-weight-light">AdminLTE 3</span>
-			</a>
+	<!-- banner section starts  -->
 
-			<!-- Sidebar -->
-			<div class="sidebar">
-				<!-- Sidebar user panel (optional) -->
-				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-					<div class="image">
-						<img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-					</div>
-					<div class="info">
-						<a href="#" class="d-block">Alexander Pierce</a>
-					</div>
-				</div>
+	<section class="banner-container">
 
-				<!-- SidebarSearch Form -->
-				<div class="form-inline">
-					<div class="input-group" data-widget="sidebar-search">
-						<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-						<div class="input-group-append">
-							<button class="btn btn-sidebar">
-								<i class="fas fa-search fa-fw"></i>
-							</button>
-						</div>
-					</div>
-					<partial name="_MainMenu" />
-				</div>
-		</aside>
-
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<div class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1 class="m-0">@ViewData["Title"]</h1>
-						</div><!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Starter Page</li>
-							</ol>
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.container-fluid -->
-			</div>
-			<!-- /.content-header -->
-			<!-- Main content -->
+		<div class="banner">
+			<img src="~/image/shop_banner_img1.jpg" alt="">
 			<div class="content">
-				<div class="container-fluid">
-					@RenderBody()
-				</div><!-- /.container-fluid -->
+				<span>special offer</span>
+				<h3>upto 50% off</h3>
+				<a href="#" class="btn">shop now</a>
 			</div>
-			<!-- /.content -->
 		</div>
-		<!-- /.content-wrapper -->
 
-		<!-- Main Footer -->
-		<footer class="main-footer">
-			<!-- To the right -->
-			<div class="float-right d-none d-sm-inline">
-				Anything you want
+		<div class="banner">
+			<img src="~/image/shop_banner_img2.jpg" alt="">
+			<div class="content">
+				<span>special offer</span>
+				<h3>upto 50% off</h3>
+				<a href="#" class="btn">shop now</a>
 			</div>
-			<!-- Default to the left -->
-			<strong>© 2022 <a href="https://apriori.bg">Apriori</a>,</strong> All Rights Reserved.
-		</footer>
-	</div>
+		</div>
 
-	<!-- ./wrapper -->
+	</section>
+
+	<!-- banner section ends -->
+	<!-- products section starts  -->
+
+	<section class="products" id="products">
+
+		<h1 class="heading"> exclusive <span>products</span> </h1>
+
+		<div class="filter-buttons">
+			<div class="buttons active" data-filter="all">all</div>
+			<div class="buttons" data-filter="arrivals">new arrivals</div>
+			<div class="buttons" data-filter="featured">featured</div>
+			<div class="buttons" data-filter="special">special offer</div>
+			<div class="buttons" data-filter="seller">best seller</div>
+		</div>
+
+		<div class="box-container">
+
+			<div class="box" data-item="featured">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img1.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="special">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img2.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="seller">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img3.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="arrivals">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img4.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="featured">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img5.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="arrivals">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img6.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="special">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img7.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="seller">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img8.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="seller">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img9.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="featured">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img10.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="special">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img11.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="box" data-item="seller">
+				<div class="icons">
+					<a href="#" class="fas fa-shopping-cart"></a>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-search"></a>
+					<a href="#" class="fas fa-eye"></a>
+				</div>
+				<div class="image">
+					<img src="image/product_img12.jpg" alt="">
+				</div>
+				<div class="content">
+					<h3>product name</h3>
+					<div class="price">
+						<div class="amount">$20.00</div>
+						<div class="cut">$25.00</div>
+						<div class="offer">20% off</div>
+					</div>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="far fa-star"></i>
+						<span>(50)</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- products section ends -->
+
+	<!-- deal section starts  -->
+
+	<section class="deal">
+
+		<div class="~/image">
+			<img src="~/image/tranding_img.png" alt="">
+		</div>
+
+		<div class="content">
+			<span>new!</span>
+			<h3>make your own custom clothes and more!</h3>
+			<p>sale get up to 50% off</p>
+			<a href="#" class="btn">shop now</a>
+		</div>
+
+	</section>
+
+	<!-- deal section ends -->
+
+	<!-- footer section starts -->
+
+	<partial name="_Footer" />
+
+	<!-- footer section ends -->
+
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
 	<!-- REQUIRED SCRIPTS -->
+	<!-- custom js file link -->
+	<script src="~/js/script.js"></script>
 	<!-- jQuery -->
 	<script src="~/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="~/js/adminlte.min.js"></script>
+	<!--Toastr -->
 	<script src="~/plugins/toastr/toastr.min.js"></script>
+
 	<partial name="_UserMessages" />
 	@await RenderSectionAsync("Scripts", false)
 </body>

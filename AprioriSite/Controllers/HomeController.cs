@@ -16,8 +16,6 @@ namespace AprioriSite.Controllers
 
         public IActionResult Index()
         {
-            ViewData[MessageConstant.ErrorMessage] = "Нещо се счупи!";
-
             return View();
         }
 
