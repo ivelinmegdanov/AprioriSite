@@ -28,7 +28,9 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseStatusCodePagesWithReExecute("/home/error");
+
+app.UseHttpsRedirection(); 
 app.UseStaticFiles();
 
 app.UseRouting();
