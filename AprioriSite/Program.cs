@@ -1,4 +1,6 @@
+using AprioriSite.Core.Constants;
 using AprioriSite.Data;
+using AprioriSite.ModelBinders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +14,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddMvcOptions(options => 
+{
+    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+    options.ModelBinderProviders.Insert(1, new DoubleModelBinderProvider());
+    options.ModelBinderProviders.Insert(2, new DateTimeModelBinderProvider(FormatingConstant.NormalDateFormat));
+});
 
 var app = builder.Build();
 
@@ -28,7 +35,7 @@ else
     app.UseHsts();
 }
 
-//app.UseStatusCodePagesWithReExecute("/home/error");
+app.UseStatusCodePagesWithReExecute("/home/error");
 
 app.UseHttpsRedirection(); 
 app.UseStaticFiles();
