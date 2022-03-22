@@ -1,5 +1,5 @@
 using AprioriSite.Core.Constants;
-using AprioriSite.Data;
+using AprioriSite.Infrastructure.Data;
 using AprioriSite.ModelBinders;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

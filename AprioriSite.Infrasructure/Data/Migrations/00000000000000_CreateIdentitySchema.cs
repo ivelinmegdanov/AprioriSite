@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace AprioriSite.Data.Migrations
+namespace AprioriSite.Infrastructure.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
