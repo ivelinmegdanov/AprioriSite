@@ -1,6 +1,18 @@
-﻿<link rel="stylesheet" href="~/css/error.css">
+﻿@{
+	ViewData["Title"] = "Apriori - Error404";
+	Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/error.css">
+<link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
+<link rel="stylesheet" href="~/plugins/toastr/toastr.min.css" />
+
+
+<title>@ViewData["Title"]</title>
 <main>
-  <h1>4<span><i class="fas fa-ghost"></i></span>4</h1>
-  <h2>Error: 404 page not found</h2>
-  <p>Sorry, the page you're looking for cannot be accessed</p>
+	<partial name="_MainMenu" />
+	<h1>404</h1>
+	<h2>Error: 404 page not found</h2>
+	<p>Sorry, the page you're looking for cannot be accessed</p>
 </main>
