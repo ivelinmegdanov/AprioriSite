@@ -1,21 +1,18 @@
-﻿@page
-@model LogoutModel
-@{
-    ViewData["Title"] = "Log out";
+﻿@{
+	ViewData["Title"] = "Apriori - Error404";
+	Layout = null;
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity.IsAuthenticated)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
-        }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+<link rel="stylesheet" href="~/css/error.css">
+<link rel="stylesheet" href="~/css/style.css">
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
+<link rel="stylesheet" href="~/plugins/toastr/toastr.min.css" />
+
+
+<title>@ViewData["Title"]</title>
+<main>
+	<partial name="_MainMenu" />
+	<h1>404</h1>
+	<h2>Error: 404 page not found</h2>
+	<p>Sorry, the page you're looking for cannot be accessed</p>
+</main>
