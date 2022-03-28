@@ -22,7 +22,10 @@
 				<div class="login">
 					<h3>User Profile</h3>
 					<partial name="_LoginPartial" />
-					<partial name="_LogoutPartial" />
+					<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+                        <i class="fas fa-door-open"></i>
+                        <button type="submit" class="nav-link btn btn-link text-dark">Log Out</button>
+                    </form>
 				</div>
 			</div>
 		</div>
