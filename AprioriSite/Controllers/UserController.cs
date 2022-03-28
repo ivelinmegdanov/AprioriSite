@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AprioriSite.Core.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,12 @@ namespace AprioriSite.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize(Roles = UserConstants.Roles.Administrator)]
+        public async Task<IActionResult> ManageUsers() 
+        {
+
         }
 
         public async Task<IActionResult> CreateRole() 

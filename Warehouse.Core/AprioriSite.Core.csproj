@@ -10,8 +10,4 @@
     <ProjectReference Include="..\AprioriSite.Infrasructure\AprioriSite.Infrasructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
