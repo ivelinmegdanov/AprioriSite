@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite.Core", "Warehou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite.Infrasructure", "AprioriSite.Infrasructure\AprioriSite.Infrasructure.csproj", "{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprioriSite.Api", "Apriori.Api\AprioriSite.Api.csproj", "{3C43F7E2-E600-4B58-AB5E-676835C86C77}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C43F7E2-E600-4B58-AB5E-676835C86C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C43F7E2-E600-4B58-AB5E-676835C86C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C43F7E2-E600-4B58-AB5E-676835C86C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C43F7E2-E600-4B58-AB5E-676835C86C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

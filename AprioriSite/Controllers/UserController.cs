@@ -6,34 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 namespace AprioriSite.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly RoleManager<IdentityRole> roleManager;
 
-        public UserController(RoleManager<IdentityRole> _roleManager)
+        private readonly UserManager<IdentityUser> userManager;
+
+        private readonly IUserService userService;
+
+        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IUserService _userService)
         {
             roleManager = _roleManager;
+            userManager = _userManager;
+            userService = _userService;
         }
 
         public IActionResult Index()
         {
             return View();
-        }
-
-        [Authorize(Roles = UserConstants.Roles.Administrator)]
-        public async Task<IActionResult> ManageUsers() 
-        {
-
-        }
-
-        public async Task<IActionResult> CreateRole() 
-        {
-            //await roleManager.CreateAsync(new IdentityRole()
-            //{
-            //    Name = "Administrator"
-            //});
-
-            return Ok();
         }
     }
 }
