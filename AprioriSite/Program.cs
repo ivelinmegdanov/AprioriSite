@@ -2,8 +2,6 @@ using AprioriSite.Core.Constants;
 using AprioriSite.Infrastructure.Data;
 using AprioriSite.ModelBinders;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,7 +51,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "Area",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
