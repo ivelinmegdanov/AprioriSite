@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AprioriSite.Core\AprioriSite.Core.csproj" />
     <ProjectReference Include="..\Warehouse.Core\AprioriSite.Core.csproj" />
   </ItemGroup>
 

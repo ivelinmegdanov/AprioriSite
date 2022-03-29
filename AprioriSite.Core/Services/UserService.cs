@@ -1,7 +1,7 @@
 ﻿using AprioriSite.Core.Constants;
 using AprioriSite.Core.Models;
-using AprioriSite.Infrasructure.Data.Identity;
 using AprioriSite.Infrastructure.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace AprioriSite.Core.Services
@@ -17,22 +17,22 @@ namespace AprioriSite.Core.Services
 
         public async Task<UserEditViewModel> GetUserForEdit(string id)
         {
-            var user = await repo.GetByIdAsync<ApplicationUser>(id);
+            var user = await repo.GetByIdAsync<IdentityUser>(id);
 
             return new UserEditViewModel()
             {
-                FirstName = user.FirstName,
-                LastName = user.LastName
+                FirstName = user.UserName,
+                LastName = user.UserName
             };
         }
 
         public async Task<IEnumerable<UserListViewModel>> GetUsers()
         {
-            return await repo.All<ApplicationUser>().Select(u => new UserListViewModel()
+            return await repo.All<IdentityUser>().Select(u => new UserListViewModel()
             {
                 Email = u.Email,
                 Id = u.Id,
-                Name = $"{u.FirstName} {u.LastName}"
+                Name = $"{u.UserName}"
             }).ToListAsync();
         }
     }

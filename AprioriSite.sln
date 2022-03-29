@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite", "AprioriSite\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite.Infrasructure", "AprioriSite.Infrasructure\AprioriSite.Infrasructure.csproj", "{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite.Core", "Warehouse.Core\AprioriSite.Core.csproj", "{27571F9A-0819-49E2-A779-1C09EC008E1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AprioriSite.Core", "AprioriSite.Core\AprioriSite.Core.csproj", "{EEC0D6ED-C19E-4798-B62E-03D57B80B516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ECBAAC3-C8D7-4E03-94E2-C77BAAA17E34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27571F9A-0819-49E2-A779-1C09EC008E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27571F9A-0819-49E2-A779-1C09EC008E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27571F9A-0819-49E2-A779-1C09EC008E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27571F9A-0819-49E2-A779-1C09EC008E1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC0D6ED-C19E-4798-B62E-03D57B80B516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC0D6ED-C19E-4798-B62E-03D57B80B516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC0D6ED-C19E-4798-B62E-03D57B80B516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC0D6ED-C19E-4798-B62E-03D57B80B516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
