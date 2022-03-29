@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Warehouse.Core\AprioriSite.Core.csproj" />
+    <ProjectReference Include="..\AprioriSite.Core.csproj" />
   </ItemGroup>
 
 </Project>
