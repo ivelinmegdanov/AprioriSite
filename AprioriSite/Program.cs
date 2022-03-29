@@ -1,18 +1,22 @@
 using AprioriSite.Core.Constants;
-using AprioriSite.Infrasructure.Data.Identity;
 using AprioriSite.Infrastructure.Data;
 using AprioriSite.ModelBinders;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplicationDbContexts(builder.Configuration);
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+
+})
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
 builder.Services.AddControllersWithViews().AddMvcOptions(options =>
 {
     options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
@@ -49,7 +53,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "Area",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

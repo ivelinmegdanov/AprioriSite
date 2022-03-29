@@ -1,5 +1,4 @@
 ﻿using AprioriSite.Core.Constants;
-using AprioriSite.Infrasructure.Data.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,15 +10,15 @@ namespace AprioriSite.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
 
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<IdentityUser> userManager;
 
-        private readonly IUserService service;
+        private readonly IUserService userService;
 
-        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager, IUserService _service)
+        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IUserService _userService)
         {
             roleManager = _roleManager;
             userManager = _userManager;
-            service = _service;
+            userService = _userService;
         }
 
         public IActionResult Index()

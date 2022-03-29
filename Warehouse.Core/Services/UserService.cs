@@ -21,7 +21,6 @@ namespace AprioriSite.Core.Services
 
             return new UserEditViewModel()
             {
-                Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName
             };
@@ -35,23 +34,6 @@ namespace AprioriSite.Core.Services
                 Id = u.Id,
                 Name = $"{u.FirstName} {u.LastName}"
             }).ToListAsync();
-        }
-
-        public async Task<bool> UpdateUser(UserEditViewModel model)
-        {
-            bool result = false;
-            var user = await repo.GetByIdAsync<ApplicationUser>(model.Id);
-
-            if (user != null)
-            {
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-
-                await repo.SaveChangesAsync();
-                result = true;
-            }
-
-            return result;
         }
     }
 }
