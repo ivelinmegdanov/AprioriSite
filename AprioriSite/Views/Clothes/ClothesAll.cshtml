@@ -1,0 +1,82 @@
+﻿@{
+	ViewData["Title"] = "All Clothes";
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<section class="products" id="products">
+
+		<h1 class="heading"> exclusive <span>products</span> </h1>
+
+		<div class="filter-buttons">
+			<div class="buttons active" data-filter="all">all</div>
+			<div class="buttons" data-filter="arrivals">new arrivals</div>
+			<div class="buttons" data-filter="featured">featured</div>
+			<div class="buttons" data-filter="special">special offer</div>
+			<div class="buttons" data-filter="seller">best seller</div>
+		</div>
+
+		<div class="box-container">
+
+			@foreach (var item in Model.Clothes)
+			{
+				<div class="box" data-item="@item.Category">
+					<div class="icons">
+						<a href="#" class="fas fa-shopping-cart"></a>
+						<a href="#" class="fas fa-heart"></a>
+						<a href="#" class="fas fa-search"></a>
+						<a href="#" class="fas fa-eye"></a>
+					</div>
+					<div class="image">
+						<img src="image/product_img1.jpg" alt="">
+					</div>
+					<div class="content">
+						<h3>@item.Label</h3>
+						<div class="price">
+							<div class="amount">$@item.Price</div>
+						</div>
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="far fa-star"></i>
+							<span>(50)</span>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
+	</section>
+	<!-- products section ends -->
+	<!-- footer section starts -->
+	<partial name="_Footer" />
+	<!-- footer section ends -->
+
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<!-- REQUIRED SCRIPTS -->
+	<!-- custom js file link -->
+	<script src="~/js/script.js"></script>
+	<!-- jQuery -->
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!--Toastr -->
+	<script src="~/plugins/toastr/toastr.min.js"></script>
+
+	<partial name="_UserMessages" />
+	@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

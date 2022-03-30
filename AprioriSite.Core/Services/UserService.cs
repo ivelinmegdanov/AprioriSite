@@ -1,5 +1,6 @@
 ﻿using AprioriSite.Core.Constants;
 using AprioriSite.Core.Models;
+using AprioriSite.Infrasructure.Data;
 using AprioriSite.Infrasructure.Data.Identity;
 using AprioriSite.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,23 @@ namespace AprioriSite.Core.Services
         public UserService(IApplicatioDbRepository _repo)
         {
             repo = _repo;
+        }
+
+        public void AddItem(AddItemViewModel model)
+        {
+            repo.AddAsync(new Item()
+            {
+                Label = model.Label,
+                Color = model.Color,
+                Size = model.Size,
+                Price = model.Price,
+                Description = model.Description,
+                Categoty = model.Category,
+                Subcategory = model.Subcategory,
+                ImageUrl = model.PictureUrl
+            });
+
+            repo.SaveChanges();
         }
 
         public async Task<ApplicationUser> GetUserById(string id)

@@ -12,5 +12,7 @@ namespace AprioriSite.Core.Constants
         Task<bool> UpdateUser(UserEditViewModel model);
 
         Task<ApplicationUser> GetUserById(string id);
+
+        void AddItem(AddItemViewModel model);
     }
 }

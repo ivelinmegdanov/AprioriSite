@@ -19,12 +19,13 @@ namespace AprioriSite.Core.Models
         [Required]
         public string Category { get; set; }
 
+        public string? Subcategory { get; set; }
+
         [Required]
         [StringLength(10)]
         public string Size { get; set; }
 
-        [Required]
-        public string CustomPicture { get; set; }
+        public string? CustomPicture { get; set; }
 
         [Required]
         public decimal Price { get; set; }

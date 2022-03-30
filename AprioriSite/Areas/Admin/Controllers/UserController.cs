@@ -46,9 +46,9 @@ namespace AprioriSite.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddItem(AddItemViewModel model)
         {
-            //adminService.AddItem(model);
+            userService.AddItem(model);
 
-            return Redirect("/Admin/AdminPanel");
+            return Redirect("/admin/user/adminpanel");
         }
 
         public async Task<IActionResult> Roles(string id) 
@@ -58,7 +58,7 @@ namespace AprioriSite.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            var model = userService.GetUserForEdit(id);
+            var model = await userService.GetUserForEdit(id);
 
             return View(model);
         }

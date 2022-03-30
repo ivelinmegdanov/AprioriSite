@@ -1,13 +1,29 @@
 ﻿@using AprioriSite.Core.Models
 @model UserEditViewModel
 @{
-    ViewData["Title"] = "User Edit";
+	ViewData["Title"] = "User Edit";
+	Layout = null;
 }
 
-<div class="row">
-    <div class="col-4">
+<head>
+	<title>@ViewData["Title"]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+
+	<title>User Edit</title>
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<div class="row">
+		<h1 class="heading"> Admin <span>Panel</span> </h1>
+		<h1 class="heading"> Admin <span>Panel</span> </h1>
+		<div class="col-4">
         <form id="edit" method="post">
-            <input type="hidden" name="Id" value="" />
+            <input type="hidden" name="Id" value="@Model.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <label asp-for="FirstName" class="form-label"></label>
@@ -28,8 +44,9 @@
             </div>
         </form>
     </div>
-</div>
+	</div>
+</body>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }
