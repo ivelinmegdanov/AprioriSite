@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AprioriSite.Core.Models.ListViewModels
+﻿namespace AprioriSite.Core.Models.ListViewModels
 {
-    public class ClothesListViewModel
+    public class ProductsListViewModel
     {
         public Guid Id { get; set; }
 

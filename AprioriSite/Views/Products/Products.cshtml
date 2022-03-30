@@ -1,5 +1,5 @@
 ﻿@{
-	ViewData["Title"] = "All Clothes";
+	ViewData["Title"] = "Products";
 	Layout = null;
 }
 
@@ -39,12 +39,12 @@
 						<a href="#" class="fas fa-eye"></a>
 					</div>
 					<div class="image">
-						<img src="image/product_img1.jpg" alt="">
+						<img src="@item.ImageUrl" alt="">
 					</div>
 					<div class="content">
 						<h3>@item.Label</h3>
 						<div class="price">
-							<div class="amount">$@item.Price</div>
+							<div class="amount">$@string.Format("{0:n2}", item.Price)</div>
 						</div>
 						<div class="stars">
 							<i class="fas fa-star"></i>
@@ -75,8 +75,5 @@
 	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!--Toastr -->
 	<script src="~/plugins/toastr/toastr.min.js"></script>
-
-	<partial name="_UserMessages" />
-	@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

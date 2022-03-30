@@ -3,6 +3,7 @@ using AprioriSite.Infrastructure.Data;
 using AprioriSite.Infrastructure.Data.Repositories;
 using AprioriSite.Core.Constants;
 using AprioriSite.Core.Services;
+using AprioriSite.Core.Contracts;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -12,6 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProductsService, ProductsService>();
 
             return services;
         }

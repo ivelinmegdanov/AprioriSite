@@ -1,4 +1,5 @@
-﻿<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+﻿@using AprioriSite.Core.Constants
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 
 <!-- header section starts  -->
@@ -7,14 +8,18 @@
 	<a href="/" class="logo"> <i class="fas fa-shopping-cart"></i> Apriori </a>
 
 	<nav class="navbar">
-		<a href="clothes">clothes</a>
-		<a href="cups">cups</a>
-		<a href="cases">cases</a>
-		<a href="contact">contact</a>
-		<a href="customproducts">custom products</a>
+		<a href="/products/products">catalog</a>
+		<a href="/cups">cups</a>
+		<a href="/cases">cases</a>
+		<a href="/contact">contact</a>
+		<a href="/customproducts">custom products</a>
 	</nav>
 
 	<div class="icons">
+		@if (User.IsInRole(UserConstants.Roles.Administrator))
+		{
+			<a href="/admin/user/adminpanel" class="fas fa-tools"></a>
+		}
 		<a href="cart" class="fas fa-shopping-cart"></a>
 		<div class="dropdown">
 			<a class="fas fa-user"></a>

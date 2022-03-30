@@ -10,24 +10,25 @@ using System.Threading.Tasks;
 
 namespace AprioriSite.Core.Services
 {
-    public class ClothesService : IClothesService
+    public class ProductsService : IProductsService
     {
         private readonly IApplicatioDbRepository repo;
 
-        public ClothesService(IApplicatioDbRepository _repo)
+        public ProductsService(IApplicatioDbRepository _repo)
         {
             repo = _repo;
         }
 
-        public IEnumerable<ClothesListViewModel> GetAllClothes()
+        public IEnumerable<ProductsListViewModel> GetAllProducts()
         {
-            return repo.All<Item>()
-                .Select(i => new ClothesListViewModel()
+            return repo.All<Item>().Where(x => x.Categoty == "Clothes")
+                .Select(p => new ProductsListViewModel()
                 {
-                    Id = i.Id,
-                    Label = i.Label,
-                    ImageUrl = i.ImageUrl,
-                    Price = i.Price
+                    Id = p.Id,
+                    Label = p.Label,
+                    ImageUrl = p.ImageUrl,
+                    Price = p.Price,
+                    Category = p.Categoty
                 });
         }
     }

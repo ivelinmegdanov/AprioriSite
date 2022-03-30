@@ -2,9 +2,10 @@
 
 namespace AprioriSite.Core.Contracts
 {
-    public interface IClothesService
+    public interface IProductsService
     {
-        IEnumerable<ClothesListViewModel> GetAllClothes();
+        IEnumerable<ProductsListViewModel> GetAllProducts();
+
         //ClothesDetailsViewModel? GetClothesById(int id);
     }
 }
