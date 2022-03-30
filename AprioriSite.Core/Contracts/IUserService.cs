@@ -1,4 +1,5 @@
 ﻿using AprioriSite.Core.Models;
+using AprioriSite.Infrasructure.Data.Identity;
 
 namespace AprioriSite.Core.Constants
 {
@@ -7,5 +8,9 @@ namespace AprioriSite.Core.Constants
         Task<IEnumerable<UserListViewModel>> GetUsers();
 
         Task<UserEditViewModel> GetUserForEdit(string id);
+
+        Task<bool> UpdateUser(UserEditViewModel model);
+
+        Task<ApplicationUser> GetUserById(string id);
     }
 }

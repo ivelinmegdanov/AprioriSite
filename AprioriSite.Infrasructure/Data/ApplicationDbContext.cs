@@ -18,11 +18,14 @@ namespace AprioriSite.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
+
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
-
-        public DbSet<Category> Categories { get; set; }
 
         public DbSet<Item> Items { get; set; }
     }

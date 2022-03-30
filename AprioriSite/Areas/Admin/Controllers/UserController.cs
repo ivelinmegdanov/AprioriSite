@@ -1,4 +1,6 @@
 ﻿using AprioriSite.Core.Constants;
+using AprioriSite.Core.Contracts;
+using AprioriSite.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +33,24 @@ namespace AprioriSite.Areas.Admin.Controllers
             return View(users);
         }
 
+        public async Task<IActionResult> AdminPanel()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> AddItem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(AddItemViewModel model)
+        {
+            //adminService.AddItem(model);
+
+            return Redirect("/Admin/AdminPanel");
+        }
+
         public async Task<IActionResult> Roles(string id) 
         {
             return Ok(id);
@@ -43,6 +63,25 @@ namespace AprioriSite.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (await userService.UpdateUser(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Успешен запис!";
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Възникна грешка!";
+            }
+
+            return View(model);
+        }
 
         public async Task<IActionResult> CreateRole()
         {

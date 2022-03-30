@@ -4,6 +4,7 @@ using AprioriSite.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AprioriSite.Infrasructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220330083617_CategoryChanged")]
+    partial class CategoryChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +41,26 @@ namespace AprioriSite.Infrasructure.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("AprioriSite.Infrasructure.Data.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("AprioriSite.Infrasructure.Data.Item", b =>
                 {
                     b.Property<Guid>("Id")
@@ -46,6 +68,9 @@ namespace AprioriSite.Infrasructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Categoty")
@@ -58,23 +83,24 @@ namespace AprioriSite.Infrasructure.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("CustomPicture")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Label")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
-                        .HasColumnType("money");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Size")
                         .IsRequired()
@@ -87,6 +113,8 @@ namespace AprioriSite.Infrasructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("TransactionId");
 
@@ -356,6 +384,10 @@ namespace AprioriSite.Infrasructure.Migrations
                         .WithMany("Items")
                         .HasForeignKey("CartId");
 
+                    b.HasOne("AprioriSite.Infrasructure.Data.Category", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("AprioriSite.Infrasructure.Data.Transaction", null)
                         .WithMany("Items")
                         .HasForeignKey("TransactionId");
@@ -413,6 +445,11 @@ namespace AprioriSite.Infrasructure.Migrations
                 });
 
             modelBuilder.Entity("AprioriSite.Infrasructure.Data.Cart", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("AprioriSite.Infrasructure.Data.Category", b =>
                 {
                     b.Navigation("Items");
                 });
