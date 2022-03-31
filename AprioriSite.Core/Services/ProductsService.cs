@@ -21,7 +21,7 @@ namespace AprioriSite.Core.Services
 
         public IEnumerable<ProductsListViewModel> GetAllProducts()
         {
-            return repo.All<Item>().Where(x => x.Categoty == "Clothes")
+            return repo.All<Item>()
                 .Select(p => new ProductsListViewModel()
                 {
                     Id = p.Id,

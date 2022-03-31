@@ -64,12 +64,11 @@ namespace AprioriSite.Core.Services
         public async Task<bool> UpdateUser(UserEditViewModel model)
         {
             bool result = false;
-            var user = await repo.GetByIdAsync<ApplicationUser>(model.Id);
+            var user = await repo.GetByIdAsync<IdentityUser>(model.Id);
 
             if (user != null)
             {
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
+                user.Email = model.FirstName;
 
                 await repo.SaveChangesAsync();
                 result = true;

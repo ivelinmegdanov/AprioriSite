@@ -14,6 +14,11 @@ namespace AprioriSite.Controllers
             _logger = logger;
         }
 
+        public IActionResult Howitworks()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();

@@ -457,7 +457,12 @@ section {
                     color: #666;
                 }
 
+.elementor-video {
+    width: 400px;
+}
+
 .deal {
+    padding-bottom: 100px;
     text-align: center;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -468,8 +473,6 @@ section {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(20.1%, #f9f9f9));
-    background: linear-gradient(#fff 20%, #f9f9f9 20.1%);
 }
 
     .deal .image {
@@ -1083,73 +1086,6 @@ section {
     background-color: #3e8e41;
 }
 
-.feature__item {
-    flex-grow: 1;
-    flex-basis: 0;
-    margin-right: 38px;
-}
-
-.feature__wrapper {
-    display: flex;
-    padding: 144px 0px;
-    max-width: 1168px;
-    margin: 0 auto;
-    font-size: 18px;
-}
-
-.main-banner {
-    background: url(./assets/main-page-new/background.svg) no-repeat center right;
-    font-size: 20px;
-}
-
-.main-banner__wrapper {
-    display: flex;
-    flex: 1;
-    padding: 56px 24px;
-    max-width: 1168px;
-    margin: 0 auto;
-}
-
-.main-banner__description {
-    width: 40%;
-    align-self: center;
-}
-
-.main-banner__advantages {
-    padding-top: 8px;
-    font-weight: 500;
-    line-height: 24px;
-    color: #485256;
-}
-
-.main-banner__navigation {
-    display: flex;
-    padding-top: 48px;
-}
-
-.main-banner__picture {
-    flex: 1;
-    overflow: hidden;
-    padding-left: 20px;
-    max-width: 520px;
-    margin-left: auto;
-}
-
-.animation {
-    overflow: hidden;
-    height: calc(1fr - var(--lottie-player-toolbar-height));
-}
-
-.mainpicture {
-    box-sizing: border-box;
-    display: inline-grid;
-    grid-auto-columns: auto;
-    grid-template-rows: auto;
-    position: relative;
-    height: inherit;
-    width: inherit;
-}
-
 .action {
     position: fixed;
     top: 20px;
@@ -1238,5 +1174,3 @@ section {
             .action .menu ul li:hover a {
                 color: #ff5d94;
             }
-
-

@@ -1,0 +1,73 @@
+﻿@{
+	ViewData["Title"] = "Products";
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/howitworks.css">
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<h1 class="heading"> How it <span>works</span> </h1>
+	<h1 class="heading"></h1>
+	<section class="deal">
+		<div class="content">
+			<h3>How It Works</h3>
+			<p>Apriori simplifies and automates the process of sourcing and creating</p>
+			<p>print on demand products at the best prices on the market.</p>
+			<a href="/products/products" class="btn">shop now</a>
+		</div>
+	</section>
+
+	<h1 class="heading">Enjoy Our Services in 3 Easy Steps</h1>
+
+	<section class="deal">
+		<div class="~/image">
+			<video class="elementor-video" src="https://printify.com/wp-content/uploads/2019/12/1_RESIZED.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload" poster="https://printify.com/wp-content/uploads/2019/11/1_Preview.jpg"></video>
+		</div>
+		<div class="content">
+			<h3>Pick</h3>
+			<p>Our catalog has over 50 products such as t-shirts, mugs, socks, and home accessories ready for you to customize. Pick the most suitable product for your business based on print, fulfillment time and price.</p>
+		</div>
+	</section>
+
+	<section class="deal">
+		<div class="~/image">
+			<video class="elementor-video" src="https://printify.com/wp-content/uploads/2019/11/Add_Design.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload" poster="https://printify.com/wp-content/uploads/2019/11/4_Preview.jpg"></video>
+		</div>
+		<div class="content">
+			<h3>Customize</h3>
+			<p>We use Mockup Generator to apply your designs to your chosen products. Easily upload your design, switch between color options, and preview your products on high-quality images.</p>
+		</div>
+	</section>
+
+	<section class="deal">
+		<div class="~/image">
+			<video class="elementor-video" src="https://printify.com/wp-content/uploads/2019/11/Printed_Shipped.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload" poster="https://printify.com/wp-content/uploads/2019/11/5_Preview.jpg"></video>
+		</div>
+		<div class="content">
+			<h3>Relax</h3>
+			<p>When you make a purchase, and your product passes Quality Control, it is sent to production and thereafter, shipped directly to you.</p>
+		</div>
+	</section>
+
+	<section class="deal">
+		<div class="content">
+			<h3>Already Found What You Were Looking For?</h3>
+			<p>Make it happen right now.</p>
+			<a href="/products/products" class="btn">Start shopping</a>
+		</div>
+	</section>
+
+	<!-- footer section starts -->
+	<partial name="_Footer" />
+	<!-- footer section ends -->
+</body>
+</html>
