@@ -1,4 +1,5 @@
-﻿using AprioriSite.Core.Models.ListViewModels;
+﻿using AprioriSite.Core.Models;
+using AprioriSite.Core.Models.ListViewModels;
 
 namespace AprioriSite.Core.Contracts
 {
@@ -6,6 +7,6 @@ namespace AprioriSite.Core.Contracts
     {
         IEnumerable<ProductsListViewModel> GetAllProducts();
 
-        //ClothesDetailsViewModel? GetClothesById(int id);
+        ItemsDetailsViewModel? GetItemsById(Guid id);
     }
 }

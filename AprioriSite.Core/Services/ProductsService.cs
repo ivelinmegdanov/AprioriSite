@@ -1,4 +1,5 @@
 ﻿using AprioriSite.Core.Contracts;
+using AprioriSite.Core.Models;
 using AprioriSite.Core.Models.ListViewModels;
 using AprioriSite.Infrasructure.Data;
 using AprioriSite.Infrastructure.Data.Repositories;
@@ -30,6 +31,24 @@ namespace AprioriSite.Core.Services
                     Price = p.Price,
                     Category = p.Categoty
                 });
+        }
+
+		public ItemsDetailsViewModel? GetItemsById(Guid id)
+		{
+            return repo.All<Item>()
+                .Where(c => c.Id == id)
+                .Select(c => new ItemsDetailsViewModel()
+                {
+
+                    Id = id,
+                    ImageUrl = c.ImageUrl,
+                    Label = c.Label,
+                    Description = c.Description,
+                    Price = c.Price,
+                    Category= c.Categoty,
+                    Subcategory = c.Categoty
+                })
+                .FirstOrDefault();
         }
     }
 }

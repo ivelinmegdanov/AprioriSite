@@ -54,43 +54,5 @@
 				}
 			</div>
 		</div>
-		<script>
-			function menuToggle() {
-			  const toggleMenu = document.querySelector(".menu");
-			  toggleMenu.classList.toggle("active");
-			}
-		</script>
 	</div>
-
-	@*<div class="icons">
-		@if (User.IsInRole(UserConstants.Roles.Administrator))
-		{
-		<a href="/admin/user/adminpanel" class="fas fa-tools"></a>
-		}
-		<a href="cart" class="fas fa-shopping-cart"></a>
-		<div class="dropdown">
-		<a class="fas fa-user"></a>
-		<div class="dropdown-content">
-		<div class="login">
-		<h3>User Profile</h3>
-		<partial name="_LoginPartial" />
-		<partial name="_LogoutPartial" />
-		</div>
-		</div>
-		</div>
-		</div>*@
-
-	<form action="" class="search-form">
-		<input type="search" name="" placeholder="search here..." id="search-box">
-		<label for="search-box" class="fas fa-search"></label>
-	</form>
-
 </header>
-
-<script>
-	var dd_main = document.querySelector(".dd_main");
-
-	dd_main.addEventListener("click", function(){
-		this.classList.toggle("active");
-	})
-</script>

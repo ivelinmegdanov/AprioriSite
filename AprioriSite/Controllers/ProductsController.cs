@@ -23,5 +23,11 @@ namespace AprioriSite.Controllers
 
             return View(model);
         }
+
+        public IActionResult Details(Guid id)
+        {
+            var model = productsService.GetItemsById(id);
+            return View(model);
+        }
     }
 }

@@ -2,9 +2,16 @@ let searchForm = document.querySelector('.search-form');
 
 let navbar = document.querySelector('.navbar');
 
-window.onscroll = () => {
-    searchForm.classList.remove('active');
-    navbar.classList.remove('active');
+//window.onscroll = () => {
+//    searchForm.classList.remove('active');
+//    navbar.classList.remove('active');
+//}
+
+var dd_main = document.querySelector(".dd_main");
+
+function menuToggle() {
+    const toggleMenu = document.querySelector(".menu");
+    toggleMenu.classList.toggle("active");
 }
 
 'use strict'

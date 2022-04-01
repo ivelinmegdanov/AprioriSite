@@ -1,0 +1,38 @@
+﻿@{
+	ViewData["Title"] = "Products";
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<section class="" deal">
+		<div class="~/image">
+			<img src="@Model.ImageUrl" alt="@Model.Label" title="@Model.Label - Main Image">
+			<div class="content">
+				<p>@Model.Category - @Model.Subcategory</p>
+				<h3>@Model.Label</h3>
+				<p> @Model.Description </p>
+			</div>
+		</div>
+	</section>
+
+	<partial name="_Footer" />
+
+	<!-- REQUIRED SCRIPTS -->
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="~/js/script.js"></script>
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/plugins/toastr/toastr.min.js"></script>
+</body>
+</html>
