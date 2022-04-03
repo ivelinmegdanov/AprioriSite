@@ -46,8 +46,8 @@ namespace AprioriSite.Core.Services
             return new UserEditViewModel()
             {
                 Id = user.Id,
-                FirstName = user.UserName,
-                LastName = user.UserName
+                Username = user.UserName,
+                Email = user.Email
             };
         }
 
@@ -68,7 +68,8 @@ namespace AprioriSite.Core.Services
 
             if (user != null)
             {
-                user.Email = model.FirstName;
+                user.Email = model.Email;
+                user.UserName = model.Username;
 
                 await repo.SaveChangesAsync();
                 result = true;

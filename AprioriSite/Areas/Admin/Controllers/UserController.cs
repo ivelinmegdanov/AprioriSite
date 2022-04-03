@@ -74,13 +74,13 @@ namespace AprioriSite.Areas.Admin.Controllers
             if (await userService.UpdateUser(model))
             {
                 ViewData[MessageConstant.SuccessMessage] = "Успешен запис!";
+                return Redirect("/admin/user/adminpanel");
             }
             else
             {
                 ViewData[MessageConstant.ErrorMessage] = "Възникна грешка!";
             }
-
-            return View(model);
+            return Ok();
         }
 
         public async Task<IActionResult> CreateRole()
