@@ -1238,3 +1238,17 @@ section {
             .action .menu ul li:hover a {
                 color: #ff5d94;
             }
+
+
+.dealdetails {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 2rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), color-stop(20.1%, #f9f9f9));
+    background: linear-gradient(#f7f7f7 20%, #f7f7f7 20.1%);

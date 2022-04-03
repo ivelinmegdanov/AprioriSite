@@ -15,13 +15,19 @@
 
 <body>
 	<partial name="_MainMenu" />
-	<section class="" deal">
+	<h1 class="heading">Details</h1>
+	<h1 class="heading"></h1>
+	<h1 class="heading"><span>Details</span> </h1>
+	<section class="deal">
 		<div class="~/image">
 			<img src="@Model.ImageUrl" alt="@Model.Label" title="@Model.Label - Main Image">
+		</div>
+		<div class="content">
 			<div class="content">
 				<p>@Model.Category - @Model.Subcategory</p>
 				<h3>@Model.Label</h3>
 				<p> @Model.Description </p>
+				<a href="/products/products" class="btn">Customize and order</a>
 			</div>
 		</div>
 	</section>

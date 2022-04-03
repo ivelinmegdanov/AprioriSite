@@ -8,10 +8,10 @@
 	<a href="/" class="logo"> <i class="fas fa-shopping-cart"></i> Apriori </a>
 
 	<nav class="navbar">
+		<a href="/">home</a>
 		<a href="/products/products">catalog</a>
 		<a href="/home/howitworks">how it works</a>
-		<a href="/cases">cases</a>
-		<a href="/contact">contact</a>
+		<a href="/home/contactus">contact us</a>
 		<a href="/customproducts">custom products</a>
 	</nav>
 
@@ -30,13 +30,22 @@
 			<div class="menu">
 				@if (User.Identity.Name != null)
 				{
-					<h3>@User.Identity.Name.Split('@')[0]<br /><span>Website Designer</span></h3>
+					<h3>@User.Identity.Name.Split('@')[0]<br />
+					@if(@User.IsInRole("Administrator"))	
+					{
+						<span>Administrator</span>
+					}
+					else
+					{
+						<span>User</span>
+					}
+					</h3>
 					<ul>
 						<li>
-							<img src="" /><a href="#">My profile</a>
+							<img src="" /><a href="/profile/myprofile">My profile</a>
 						</li>
 						<li>
-							<img src="" /><a href="#">Edit profile</a>
+							<img src="" /><a href="/profile/editprofile">Edit profile</a>
 						</li>
 						<li>
 							<img src="" /><a href="#">Inbox</a>
@@ -44,7 +53,7 @@
 						<li>
 							<img src="" /><a href="#">Setting</a>
 						</li>
-						<li><img src="" /><a href="#">Help</a></li>
+						<li><img src="" /><a href="/home/contactus">Help</a></li>
 						<li>
 							<form name="logout" id="logout" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
 								<img src="" /><a href="javascript:document.forms['logout'].submit()">Logout</a>
