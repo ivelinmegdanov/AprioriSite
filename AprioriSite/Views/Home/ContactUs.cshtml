@@ -45,14 +45,14 @@
 			<form action="mailto: apriori@gmail.com" target="_blank">
 				<h3>get in touch</h3>
 				<div class="inputBox">
-					<input type="text" placeholder="your name">
-					<input type="email" placeholder="your email">
+					<input type="text" placeholder="your name" required minlength="3">
+					<input type="email" placeholder="your email" required>
 				</div>
 				<div class="inputBox">
-					<input type="number" placeholder="your number">
-					<input type="text" placeholder="your subject">
+					<input type="number" placeholder="your number" required>
+					<input type="text" placeholder="your subject" required minlength="3">
 				</div>
-				<textarea placeholder="your message" cols="30" rows="10"></textarea>
+				<textarea placeholder="your message" cols="30" rows="10" required minlength="5"></textarea>
 				<input type="submit" value="send message" class="btn">
 			</form>
 
