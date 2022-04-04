@@ -23,8 +23,6 @@ namespace AprioriSite.Infrastructure.Data
             base.OnConfiguring(optionsBuilder);
         }
 
-        public DbSet<Cart> Carts { get; set; }
-
         public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<Item> Items { get; set; }

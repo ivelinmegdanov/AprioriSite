@@ -1,26 +1,65 @@
 ﻿@{
-	ViewData["Title"] = "Contact Us";
+	ViewData["Title"] = "Contact us";
 	Layout = null;
 }
 
-<head runat="server">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="js/jquery-1.3.2.min.js" language="javascript" ></script>
-    <script src="js/jquery-ui-1.7.2.custom.min.js" language="javascript" ></script>
-    <script type="text/javascript">
-        $(function() {
-            $("#draggable").draggable();
-            $("#<%= imgServerControl.ClientID %>").draggable();
-        });
-    </script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css">
 </head>
-<body>
-    <form id="form1" runat="server">
-    <!-- Static Draggable Image -->
-    <img src="https://media.discordapp.net/attachments/958825603686092902/959118090073952277/unknown.png?width=346&height=346" id="draggable" />
 
-    <!-- ASP.NET server image control -->
-    <asp:Image ImageUrl="https://media.discordapp.net/attachments/958825603686092902/959117155155210340/unknown.png?width=346&height=346" ID="imgServerControl" runat="server" />
-    </form>
-</body>
-</html>
+
+<partial name="_MainMenu" />	
+
+	<section class="contact" id="contact">
+
+		<h1 class="heading"> <span>contact</span> us </h1>
+
+		<div class="icons-container">
+
+			<div class="icons">
+				<i class="fas fa-map-marker-alt"></i>
+				<h3>address</h3>
+				<p>Bul. „Nikola Gabrovski“ 39B</p>
+			</div>
+
+			<div class="icons">
+				<i class="fas fa-envelope"></i>
+				<h3>email</h3>
+				<p>apriori@gmail.com</p>
+				<p>iv4o.megdanov@gmail.com</p>
+			</div>
+
+			<div class="icons">
+				<i class="fas fa-phone"></i>
+				<h3>phone</h3>
+				<p>088 879 2212</p>
+				<p>088 933 7266</p>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<form action="mailto: apriori@gmail.com" target="_blank">
+				<h3>get in touch</h3>
+				<div class="inputBox">
+					<input type="text" placeholder="your name">
+					<input type="email" placeholder="your email">
+				</div>
+				<div class="inputBox">
+					<input type="number" placeholder="your number">
+					<input type="text" placeholder="your subject">
+				</div>
+				<textarea placeholder="your message" cols="30" rows="10"></textarea>
+				<input type="submit" value="send message" class="btn">
+			</form>
+
+			<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d182.15064806367397!2d25.618745734835578!3d43.07486719131658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a9260d2f6d07bb%3A0xca0cd7110b390aaa!2z0LHRg9C7LiDigJ7QndC40LrQvtC70LAg0JPQsNCx0YDQvtCy0YHQutC44oCcIDM50JEsIDUwMDIg0KDQsNC50L7QvSDQl9Cw0L_QsNC00LXQvSwg0JLQtdC70LjQutC-INCi0YrRgNC90L7QstC-!5e0!3m2!1sbg!2sbg!4v1649086134825!5m2!1sbg!2sbg" allowfullscreen="" loading="lazy"></iframe>
+
+		</div>
+
+	</section>
+
+<partial name="_Footer" />	

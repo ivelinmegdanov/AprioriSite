@@ -22,30 +22,10 @@ namespace AprioriSite.Infrasructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AprioriSite.Infrasructure.Data.Cart", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Carts");
-                });
-
             modelBuilder.Entity("AprioriSite.Infrasructure.Data.Item", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CartId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Categoty")
@@ -91,8 +71,6 @@ namespace AprioriSite.Infrasructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CartId");
 
                     b.HasIndex("TransactionId");
 
@@ -358,10 +336,6 @@ namespace AprioriSite.Infrasructure.Migrations
 
             modelBuilder.Entity("AprioriSite.Infrasructure.Data.Item", b =>
                 {
-                    b.HasOne("AprioriSite.Infrasructure.Data.Cart", null)
-                        .WithMany("Items")
-                        .HasForeignKey("CartId");
-
                     b.HasOne("AprioriSite.Infrasructure.Data.Transaction", null)
                         .WithMany("Items")
                         .HasForeignKey("TransactionId");
@@ -416,11 +390,6 @@ namespace AprioriSite.Infrasructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("AprioriSite.Infrasructure.Data.Cart", b =>
-                {
-                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("AprioriSite.Infrasructure.Data.Transaction", b =>
