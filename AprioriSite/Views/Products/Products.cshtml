@@ -33,12 +33,8 @@
 			@foreach (var item in Model.Clothes)
 			{
 				<div class="box" data-item="@item.Category">
-					<div class="icons">
-						<a href="/products/details?id=@(item.Id)" class="fas fa-shopping-cart"></a>
-						<a href="#" class="fas fa-heart"></a>
-						<a href="#" class="fas fa-search"></a>
-						<a href="#" class="fas fa-eye"></a>
-					</div>
+					<a class="icons" href="/products/details?id=@(item.Id)">
+					</a>
 					<div class="image">
 						<img src="@item.ImageUrl" alt="">
 					</div>
@@ -48,12 +44,8 @@
 							<div class="amount">$@string.Format("{0:n2}", item.Price)</div>
 						</div>
 						<div class="stars">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="far fa-star"></i>
-							<span>(50)</span>
+							<i>Upvotes: </i>
+							<span>@item.Upvotes</span>
 						</div>
 					</div>
 				</div>

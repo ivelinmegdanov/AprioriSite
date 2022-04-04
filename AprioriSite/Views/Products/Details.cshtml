@@ -18,7 +18,7 @@
 	<h1 class="heading">Details</h1>
 	<h1 class="heading"></h1>
 	<h1 class="heading"><span>Details</span> </h1>
-	<section class="deal">
+	<section class="dealdetails">
 		<div class="~/image">
 			<img src="@Model.ImageUrl" alt="@Model.Label" title="@Model.Label - Main Image">
 		</div>
@@ -26,12 +26,18 @@
 			<div class="content">
 				<p>@Model.Category - @Model.Subcategory</p>
 				<h3>@Model.Label</h3>
+				<h3></h3>
 				<p> Description: </p>
 				<p> @Model.Description </p>
 				<a href="/products/products" class="btn">Customize and order</a>
 			</div>
 		</div>
 	</section>
+	<div class="instructions">
+		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532483642900540/unknown.png?width=1139&height=466">
+		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532519265136700/unknown.png?width=1141&height=179">
+		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532555017359410/unknown.png?width=1144&height=325">
+	</div>
 
 	<partial name="_Footer" />
 

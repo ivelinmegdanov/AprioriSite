@@ -1,4 +1,5 @@
 ﻿using AprioriSite.Core.Constants;
+using AprioriSite.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,40 @@ namespace AprioriSite.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> MyProfile()
+        {
+            var users = await userService.GetUsers();
+
+            return View(users);
+        }
+
+        public async Task<IActionResult> EditProfile(string id)
+        {
+            var model = await userService.GetUserForEdit(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(UserEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (await userService.UpdateUser(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Успешен запис!";
+                return Redirect("/profile/myprofile");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Възникна грешка!";
+            }
+            return Ok();
         }
     }
 }

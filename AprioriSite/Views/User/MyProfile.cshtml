@@ -1,0 +1,46 @@
+﻿@using AprioriSite.Core.Models
+@using System.Security.Claims
+
+@model IEnumerable<UserListViewModel>
+@{
+	ViewData["Title"] = "Admin Panel";
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+</head>
+<body>
+	<partial name="_MainMenu" />
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<h1 class="heading"> My <span>Profile</span> </h1>
+				<h1 class="heading"> My <span>Profile</span> </h1>
+				<div class="users">
+					<table class="table table-hover text-nowrap">
+						<tbody>
+								<tr>
+									<h2>User</h2>
+									<h3>@User.Identity.Name</h3>
+									<h2>Email</h2>
+									<h3>@User.FindFirstValue(ClaimTypes.Email)</h3>
+									<h2>Actions</h2>
+									<h3>
+										<a asp-area="user" asp-action="editprofile" asp-controller="user" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="btn btn-block btn-outline-success btn-xs">Edit</a>
+									</h3>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<partial name="_Footer" />
+		<script src="~/js/script.js"></script>
+</body>

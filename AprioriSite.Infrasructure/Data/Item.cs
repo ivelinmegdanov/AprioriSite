@@ -39,6 +39,8 @@ namespace AprioriSite.Infrasructure.Data
         [Required(ErrorMessage = "The category of the item is required and must be below 20 characters!")]
         public string Categoty { get; set; }
 
+        [Required]
+        public int Upvotes { get; set; } = 0;
 
         public string? Subcategory { get; set; }
     }

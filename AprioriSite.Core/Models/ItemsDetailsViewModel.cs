@@ -18,5 +18,7 @@ namespace AprioriSite.Core.Models
 		public string Category { get; set; }
 
 		public string Subcategory { get; set; }
-	}
+
+        public int Upvotes { get; set; }
+    }
 }
