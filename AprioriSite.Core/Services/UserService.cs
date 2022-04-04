@@ -43,11 +43,21 @@ namespace AprioriSite.Core.Services
         {
             var user = await repo.GetByIdAsync<IdentityUser>(id);
 
+            if (user != null) 
+            {
+                return new UserEditViewModel()
+                {
+                    Id = user.Id,
+                    Username = user.UserName,
+                    Email = user.Email
+                };
+            }
+
             return new UserEditViewModel()
             {
-                Id = user.Id,
-                Username = user.UserName,
-                Email = user.Email
+                Id = id,
+                Username = "Invalid User",
+                Email = "Invalid User"
             };
         }
 

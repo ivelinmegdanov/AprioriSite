@@ -47,6 +47,7 @@ html {
     }
 
 section {
+
     padding: 2rem 9%;
 }
 
@@ -1282,4 +1283,8 @@ section {
 
 .instructions {
     text-align: center;
+}
+
+#footer {
+    padding: 0rem 4rem;
 }
