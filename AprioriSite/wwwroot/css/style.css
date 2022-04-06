@@ -239,7 +239,7 @@ section {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 1.5rem;
-    padding-top: 5rem;
+    padding-top: 10rem;
     padding-bottom: 5rem;
 }
 
@@ -1287,4 +1287,13 @@ section {
 
 #footer {
     padding: 0rem 4rem;
+}
+
+.item-to-database {
+    font-size: 20;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
 }

@@ -19,14 +19,6 @@ namespace AprioriSite.Infrasructure.Data
         [Required(ErrorMessage = "ImageUrl is required!")]
         public string ImageUrl { get; set; }
 
-        [Required]
-        [StringLength(20, ErrorMessage = "The color of the item is required and must be below 20 characters!")]
-        public string Color { get; set; }
-
-        [Required]
-        [StringLength(10, ErrorMessage = "The size of the item is required and must be below 10 characters!")]
-        public string Size { get; set; }
-
         public string? CustomPicture { get; set; }
 
         [Required]

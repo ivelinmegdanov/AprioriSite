@@ -22,8 +22,6 @@ namespace AprioriSite.Core.Services
             repo.AddAsync(new Item()
             {
                 Label = model.Label,
-                Color = model.Color,
-                Size = model.Size,
                 Price = model.Price,
                 Description = model.Description,
                 Categoty = model.Category,

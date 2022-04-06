@@ -52,7 +52,7 @@ namespace AprioriSite.Controllers
             if (await userService.UpdateUser(model))
             {
                 ViewData[MessageConstant.SuccessMessage] = "Успешен запис!";
-                return Redirect("/profile/myprofile");
+                return Redirect("/user/myprofile");
             }
             else
             {
