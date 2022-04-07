@@ -1,0 +1,105 @@
+﻿@{
+	ViewData["Title"] = "Customise";
+	Layout = null;
+}
+
+<script>
+	var submitButton = document.getElementById("submit");
+	submitButton.addEventListener("click", submitImage);
+
+	function submitImage(){
+		var image = document.getElementById("display_image");
+		ctx.drawImage(image, 0,0);
+	}
+
+			$(function(){
+
+		var img = new Image();
+		img.onload = function(){
+			ctx.drawImage(img, 0,0);
+		};
+		img.src = document.getElementById("image_input");
+
+		var canvas=document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var canvasOffset=$("#canvas").offset();
+		var offsetX=canvasOffset.left;
+		var offsetY=canvasOffset.top;
+		var canvasWidth=canvas.width;
+		var canvasHeight=canvas.height;
+		var isDragging=false;
+
+		function handleMouseDown(e){
+		  canMouseX=parseInt(e.clientX-offsetX);
+		  canMouseY=parseInt(e.clientY-offsetY);
+		  // set the drag flag
+		  isDragging=true;
+		}
+
+		function handleMouseUp(e){
+		  canMouseX=parseInt(e.clientX-offsetX);
+		  canMouseY=parseInt(e.clientY-offsetY);
+		  // clear the drag flag
+		  isDragging=false;
+		}
+
+		function handleMouseOut(e){
+		  canMouseX=parseInt(e.clientX-offsetX);
+		  canMouseY=parseInt(e.clientY-offsetY);
+		  // user has left the canvas, so clear the drag flag
+		  //isDragging=false;
+		}
+
+		function handleMouseMove(e){
+		  canMouseX=parseInt(e.clientX-offsetX);
+		  canMouseY=parseInt(e.clientY-offsetY);
+		  // if the drag flag is set, clear the canvas and draw the image
+		  if(isDragging){
+			  ctx.clearRect(0,0,canvasWidth,canvasHeight);
+			  ctx.drawImage(img,canMouseX-128/2,canMouseY-120/2,128,120);
+		  }
+		}
+
+		$("#canvas").mousedown(function(e){handleMouseDown(e);});
+		$("#canvas").mousemove(function(e){handleMouseMove(e);});
+		$("#canvas").mouseup(function(e){handleMouseUp(e);});
+		$("#canvas").mouseout(function(e){handleMouseOut(e);});
+	});
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<h1 class="heading">Customise</h1>
+	<h1 class="heading"></h1>
+	<h1 class="heading"><span>Customise</span> </h1>
+	<canvas class="canvasedit" id="canvasedit" width=500 height=500 style="background:url(@Model.ImageUrl)"></canvas>
+
+		<input type="file" id="image_input" accept="image/png, image/jpg">
+		<div id="display_image"></div>
+
+		<input type="button" id="upload" class="upload">Upload</input>
+
+
+	<button onclick="download()">Buy now</button>
+
+	<script src="~/js/upload-image.js"></script>
+
+	<partial name="_Footer" />
+
+	<!-- REQUIRED SCRIPTS -->
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="~/js/script.js"></script>
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/plugins/toastr/toastr.min.js"></script>
+</body>
+</html>
