@@ -8,5 +8,7 @@ namespace AprioriSite.Core.Contracts
         IEnumerable<ProductsListViewModel> GetAllProducts();
 
         ItemsDetailsViewModel? GetItemsById(Guid id);
+
+        void OrderItem(OrderItemViewModel model);
     }
 }

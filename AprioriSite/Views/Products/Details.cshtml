@@ -1,5 +1,5 @@
 ﻿@{
-	ViewData["Title"] = "Products";
+	ViewData["Title"] = "Details";
 	Layout = null;
 }
 
@@ -26,6 +26,7 @@
 			<div class="content">
 				<p>@Model.Category - @Model.Subcategory</p>
 				<h3>@Model.Label</h3>
+				<h3>@string.Format("{0:n2}", @Model.Price) $</h3>
 				<h3></h3>
 				<p> Description: </p>
 				<p> @Model.Description </p>

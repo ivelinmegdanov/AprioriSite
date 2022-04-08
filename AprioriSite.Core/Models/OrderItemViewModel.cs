@@ -1,13 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AprioriSite.Infrasructure.Data
+namespace AprioriSite.Core.Models
 {
-	public class Transaction
-	{
-		[Key]
-		public Guid Id { get; set; } = Guid.NewGuid();
-
+    public class OrderItemViewModel
+    {
 		[Required]
 		public bool Confirmed { get; set; } = false;
 
@@ -46,7 +42,6 @@ namespace AprioriSite.Infrasructure.Data
 		public Guid ItemId { get; set; }
 
 		[Required]
-		[Range(0, 2000)]
 		public int Quantity { get; set; }
 
 		[Required]

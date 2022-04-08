@@ -3,7 +3,7 @@
 
 @model IEnumerable<UserListViewModel>
 @{
-	ViewData["Title"] = "Admin Panel";
+	ViewData["Title"] = "My profile";
 	Layout = null;
 }
 
@@ -12,35 +12,62 @@
 <head>
 	<title>@ViewData["Title"]</title>
 	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/css/myprofile.css" />
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
 </head>
 <body>
 	<partial name="_MainMenu" />
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<h1 class="heading"> My <span>Profile</span> </h1>
-				<h1 class="heading"> My <span>Profile</span> </h1>
-				<div class="users">
-					<table class="table table-hover text-nowrap">
-						<tbody>
-								<tr>
-									<h2>User</h2>
-									<h3>@User</h3>
-									<h2>Email</h2>
-									<h3>@User.FindFirstValue(ClaimTypes.Email)</h3>
-									<h2>Actions</h2>
-									<h3>
-										<a asp-area="user" asp-action="editprofile" asp-controller="user" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="btn btn-block btn-outline-success btn-xs">Edit</a>
-									</h3>
-								</tr>
-						</tbody>
-					</table>
+
+	<h1 class="heading"> My <span>Profile</span> </h1>
+	<h1 class="heading"> My <span>Profile</span> </h1>
+
+	<div class="page-content page-container" id="page-content">
+		<div class="padding">
+			<div class="row container d-flex justify-content-center">
+				<div class="col-xl-6 col-md-12">
+					<div class="card user-card-full">
+						<div class="row m-l-0 m-r-0">
+							<div class="col-sm-4 bg-c-lite-green user-profile">
+								<div class="card-block text-center text-white">
+									<div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+									<h6 class="f-w-600">@User.Identity.Name</h6>
+									@if (@User.IsInRole("Administrator"))
+									{
+										<p>Administrator</p>
+									}
+									else
+									{
+										<p>User</p>
+									}
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div class="card-block">
+									<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+									<div class="row">
+										<div class="col-sm-6">
+											<p class="m-b-10 f-w-600">Username</p>
+											<h6 class="text-muted f-w-400">@User.Identity.Name</h6>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<p class="m-b-10 f-w-600">Email</p>
+											<h6 class="text-muted f-w-400">@User.FindFirstValue(ClaimTypes.Email)</h6>
+										</div>
+									</div>
+								</div>
+								<h3>
+									<a asp-area="user" asp-action="editprofile" asp-controller="user" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="btn btn-block btn-outline-success btn-xs">Edit</a>
+								</h3>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
+
 	<partial name="_Footer" />
-		<script src="~/js/script.js"></script>
+	<script src="~/js/script.js"></script>
 </body>

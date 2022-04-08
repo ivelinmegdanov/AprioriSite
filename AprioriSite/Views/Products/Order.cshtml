@@ -1,0 +1,157 @@
+﻿@{
+	ViewData["Title"] = "Order";
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link rel="stylesheet" href="~/css/checkout.css">
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+
+	<section class="content">
+
+		<div class="containerorder">
+		</div>
+		<div class="details shadow">
+			<div class="details__item">
+
+				<div class="item__image">
+					<img class="iphone" src="@Model.ImageUrl" alt="">
+				</div>
+				<div class="item__details">
+					<div class="item__title">
+						@Model.Label
+					</div>
+					<div class="item__price">
+						@string.Format("{0:n2}", @Model.Price) $
+					</div>
+					<div class="item__quantity">
+						Quantity: 
+						<select class="input ddl">
+							<option selected>01</option>
+							<option>02</option>
+							<option>03</option>
+							<option>04</option>
+							<option>05</option>
+							<option>06</option>
+							<option>07</option>
+							<option>08</option>
+							<option>09</option>
+							<option>10</option>
+						</select>
+					</div>
+					<div class="item__description">
+						<ul style="">
+							<li>@Model.Description</li>
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="discount"></div>
+
+		<div class="containerorder">
+			<div class="payment">
+				<div class="payment__title">
+					Payment Method
+				</div>
+				<div class="payment__types">
+					<div class="payment__type payment__type--cc active">
+						On Arrival (SPEEDY)
+					</div>
+				</div>
+
+				<div class="payment__info">
+					<div class="payment__cc">
+						<div class="payment__title">
+							<i class="icon icon-user"></i>Personal Information
+						</div>
+						<form>
+							<div class="form__cc">
+								<div class="row">
+									<div class="field">
+										<div class="title">
+											First Name
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+									<div class="field">
+										<div class="title">
+											Last Name
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="field">
+										<div class="title">
+											Country
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+									<div class="field">
+										<div class="title">
+											Province
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="field">
+										<div class="title">
+											City
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+									<div class="field">
+										<div class="title">
+											Address
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="field">
+										<div class="title">
+											Zip
+										</div>
+										<input type="text" class="input txt" />
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="containerorder">
+			<div class="actions">
+				<a href="#" class="btn action__submit">
+					Place your Order
+					<i class="icon icon-arrow-right-circle"></i>
+				</a>
+			</div>
+	</section>
+	</div>
+
+	<partial name="_Footer" />
+
+	<!-- REQUIRED SCRIPTS -->
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	<script src="~/js/script.js"></script>
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/plugins/toastr/toastr.min.js"></script>
+</body>
+</html>

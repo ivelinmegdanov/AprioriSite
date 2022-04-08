@@ -1,7 +1,7 @@
 ﻿@using AprioriSite.Core.Models
 @model UserEditViewModel
 @{
-	ViewData["Title"] = "User Edit";
+	ViewData["Title"] = "Edit my profile";
 	Layout = null;
 }
 
@@ -11,6 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/css/myprofile.css" />
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
 
 	<title>User Profile</title>
@@ -18,35 +19,47 @@
 
 <body>
 	<partial name="_MainMenu" />
-	<div class="row">
-		<h1 class="heading"> Edit <span>Profile</span> </h1>
-		<h1 class="heading"> Edit <span>Profile</span> </h1>
-		<div class="users">
-        <form id="edit" method="post">
-            <input type="hidden" name="Id" value="@Model.Id" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <label asp-for="Username" class="form-label"></label>
-                <input asp-for="Username" class="form-control" aria-required="true" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control" autocomplete="current-password" aria-required="true" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="row">&nbsp;</div>
-            <div class="row">
-                <div class="col-4">
-                    <button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
-    </div>
+
+	<h1 class="heading"> Edit <span>Profile</span> </h1>
+	<h1 class="heading"> Edit <span>Profile</span> </h1>
+
+	<div class="page-content page-container" id="page-content">
+		<div class="padding">
+			<div class="row container d-flex justify-content-center">
+				<div class="col-xl-6 col-md-12">
+					<div class="card user-card-full">
+						<div class="row m-l-0 m-r-0">
+							<form id="edit" method="post">
+								<div class="col-sm-8">
+									<div class="card-block">
+										<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+										<div class="row">
+											<label asp-for="Username" class="form-label"></label>
+											<input asp-for="Username" class="form-control" aria-required="true" />
+											<span asp-validation-for="Username" class="text-danger"></span>
+										</div>
+										<div class="row">
+											<label asp-for="Email" class="form-label"></label>
+											<input asp-for="Email" class="form-control" autocomplete="current-password" aria-required="true" />
+											<span asp-validation-for="Email" class="text-danger"></span>
+										</div>
+									</div>
+									<h3>
+										<div class="col-4">
+											<button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
+										</div>
+									</h3>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-    <partial name="_Footer" />
-    	<script src="~/js/script.js"></script>
+
+	<partial name="_Footer" />
+	<script src="~/js/script.js"></script>
 </body>
 
 @section Scripts {

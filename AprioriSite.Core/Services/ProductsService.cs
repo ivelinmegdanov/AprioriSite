@@ -50,5 +50,28 @@ namespace AprioriSite.Core.Services
                 })
                 .FirstOrDefault();
         }
+
+        public void OrderItem(OrderItemViewModel model)
+        {
+            repo.AddAsync(new Transaction()
+            {
+                Confirmed = model.Confirmed,
+                Shipped = model.Shipped,
+                Arrived = model.Arrived,
+                Paid = model.Paid,
+                Promocode = model.Promocode,
+                Country = model.Country,
+                Province = model.Province,
+                City = model.City,
+                Zip = model.Zip,
+                Address = model.Address,
+                ItemId = model.ItemId,
+                Quantity = model.Quantity,
+                UserId = model.UserId,
+                Price = model.Price
+            });
+
+            repo.SaveChanges();
+        }
     }
 }
