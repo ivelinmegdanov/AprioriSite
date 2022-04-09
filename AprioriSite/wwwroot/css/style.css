@@ -1299,7 +1299,10 @@ section {
 }
 
 .canvasedit {
-    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
     background-size: cover !important;
     background-repeat: no-repeat !IMPORTANT;
     width: 400px;
@@ -1335,4 +1338,12 @@ section {
 .customise-canvas-file {
     display: flex;
     justify-content: center;
+}
+
+.optionalstuff {
+    display: none;
+}
+
+.customiseCenter {
+    text-align: center;
 }

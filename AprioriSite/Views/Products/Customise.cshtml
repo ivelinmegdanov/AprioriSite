@@ -68,18 +68,20 @@
 	<link rel="stylesheet" href="~/css/style.css">
 </head>
 
-<body>
+<body onload="draw();">
 	<partial name="_MainMenu" />
+
 	<h1 class="heading">Customise</h1>
 	<h1 class="heading"></h1>
 	<h1 class="heading"><span>Customise</span> </h1>
-	<div class="customise-canvas-file">
-		<canvas class="canvasedit" id="canvasedit" width=500 height=500 style="background:url(@Model.ImageUrl)"></canvas>
+
+	<div class="customiseCenter">
+		<canvas class="canvasedit" id="canvas" width=346 height=346></canvas>
 		<p></p>
-		<div class="file_input">
-			<input type="file" id="image_input" accept="image/png, image/jpg">
-			<div id="display_image"></div>
-		</div>
+		<a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
+		<form action="/action_page.php">
+			<input type="file" id="myFile" accept="image/*" onchange="upload_img()" name="filename">
+		</form>
 	</div>
 
 	<section class="dealdetails">
@@ -94,31 +96,89 @@
 			</div>
 		</div>
 	</section>
-	<div class="instructions">
-		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532483642900540/unknown.png?width=1139&height=466">
-		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532519265136700/unknown.png?width=1141&height=179">
-		<img class="instructions" src="https://media.discordapp.net/attachments/958825603686092902/960532555017359410/unknown.png?width=1144&height=325">
-	</div>
 
-	<script>
-		  var submitButton = document.getElementById("upload");
-		  submitButton.addEventListener("click", submitImage);
-
-		  function submitImage(){
-			  var canvas = document.getElementById("canvasedit");
-			  var image = document.getElementById("display_image");
-			  var ctx = canvas.getContext('2d');
-			  var base_image = new Image();
-			  base_image.src = "https://cdn-media-1.freecodecamp.org/images/0*9gc-miHUtGQVtTfT.png";
-			  base_image.onload = function(){
-			  ctx.drawImage(base_image, 0, 0);
-		}
-		  }
-	</script>
-
-	<script src="~/js/upload-image.js"></script>
+	<img class="optionalstuff" id="optionalstuff" src=@Model.ImageUrl>
 
 	<partial name="_Footer" />
+
+	<script>
+		var background=new Image();
+		var imageBackground = document.getElementById("optionalstuff")
+		background.crossOrigin = 'anonymos';
+		background.src = imageBackground.src;////model za background image
+		var img=new Image();
+
+		var imageUploaded=new Boolean(false);
+
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var ox = canvas.width/6;
+		var oy = canvas.height/6;
+
+		download_img = function(el) {
+		  var image = canvas.toDataURL("image/jpg");
+		  el.href = image;
+		};
+
+		upload_img=function(){
+			var file=document.getElementById('myFile').files[0];
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onloadend=function(e){
+				img.src=e.target.result;
+			}
+			imageUploaded=true;
+			draw();
+		}
+
+
+		draw=function(){
+			if(imageUploaded)
+			{
+			ctx.drawImage(img, 10,10);
+			}
+			var canvasOffset=$("#canvas").offset();
+			var offsetX=canvasOffset.left;
+			var offsetY=canvasOffset.top;
+			var canvasWidth=canvas.width;
+			var canvasHeight=canvas.height;
+			var isDragging=false;
+			ctx.drawImage(background,0,0);
+			function handleMouseDown(e){
+			  canMouseX=parseInt(e.clientX-offsetX);
+			  canMouseY=parseInt(e.clientY-offsetY);
+			  isDragging=true;
+			}
+
+			function handleMouseUp(e){
+			  canMouseX=parseInt(e.clientX-offsetX);
+			  canMouseY=parseInt(e.clientY-offsetY);
+			  isDragging=false;
+			}
+
+			function handleMouseOut(e){
+			  canMouseX=parseInt(e.clientX-offsetX);
+			  canMouseY=parseInt(e.clientY-offsetY);
+			}
+
+			function handleMouseMove(e){
+			  canMouseX=parseInt(e.clientX-offsetX);
+			  canMouseY=parseInt(e.clientY-offsetY);
+			  if(isDragging){
+				  ctx.clearRect(0,0,canvasWidth,canvasHeight);
+				  ctx.drawImage(background,0,0);
+				  if(imageUploaded){
+				  ctx.drawImage(img,canMouseX-128/2,canMouseY-120/2,128,120);
+				  }
+			  }
+			}
+
+			$("#canvas").mousedown(function(e){handleMouseDown(e);});
+			$("#canvas").mousemove(function(e){handleMouseMove(e);});
+			$("#canvas").mouseup(function(e){handleMouseUp(e);});
+			$("#canvas").mouseout(function(e){handleMouseOut(e);});
+		};
+	</script>
 
 	<!-- REQUIRED SCRIPTS -->
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
