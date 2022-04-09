@@ -1,12 +1,14 @@
-C# .NET Core MVC Application for SoftUni Exam 2022
-Website for making custom clothes and more (not public)
+# Apriori
 
-Technologies used in the project:
+C# .NET Core MVC Application for SoftUni Exam 2022 Website for making custom clothes and more called Apriori (not public)
 
-GoogleMaps API
-EF Core with MSSQL
-Identity for login and sign up functionality
-Canvas image editor
-Javascript HTML & CSS
+## Technologies used in the project:
 
-The website was made for SoftUni (Software University) exam and is not public or never going to be
+GoogleMaps API\
+EF Core with MSSQL\
+Identity for login and sign up functionality\
+Canvas image editor\
+Javascript HTML & CS
+
+## License
+**The website was made for SoftUni (Software University) exam and is not public or never going to be!**
