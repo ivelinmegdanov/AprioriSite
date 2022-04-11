@@ -11,6 +11,8 @@ namespace AprioriSite.Core.Constants
 
         Task<bool> UpdateUser(UserEditViewModel model);
 
+        Task<IEnumerable<UserOrdersViewModel>> GetUserOrders(string id);
+
         Task<ApplicationUser> GetUserById(string id);
 
         void AddItem(AddItemViewModel model);

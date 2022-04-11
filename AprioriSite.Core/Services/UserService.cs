@@ -2,6 +2,7 @@
 using AprioriSite.Core.Models;
 using AprioriSite.Infrasructure.Data;
 using AprioriSite.Infrasructure.Data.Identity;
+using AprioriSite.Infrastructure.Data;
 using AprioriSite.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,12 @@ namespace AprioriSite.Core.Services
     {
         private readonly IApplicatioDbRepository repo;
 
-        public UserService(IApplicatioDbRepository _repo)
+        private readonly ApplicationDbContext context;
+
+        public UserService(IApplicatioDbRepository _repo, ApplicationDbContext _context)
         {
             repo = _repo;
+            context = _context;
         }
 
         public void AddItem(AddItemViewModel model)
@@ -41,7 +45,7 @@ namespace AprioriSite.Core.Services
         {
             var user = await repo.GetByIdAsync<IdentityUser>(id);
 
-            if (user != null) 
+            if (user != null)
             {
                 return new UserEditViewModel()
                 {
@@ -57,6 +61,51 @@ namespace AprioriSite.Core.Services
                 Username = "Invalid User",
                 Email = "Invalid User"
             };
+        }
+
+        public async Task<IEnumerable<UserOrdersViewModel>> GetUserOrders(string id)
+        {
+            try
+            {
+                var model = context.Transactions.Select(u => new UserOrdersViewModel()
+                {
+                    Confirmed = u.Confirmed,
+                    Shipped = u.Shipped,
+                    Arrived = u.Arrived,
+                    Paid = u.Paid,
+                    Country = u.Country,
+                    Province = u.Province,
+                    City = u.City,
+                    Zip = u.Zip,
+                    Address = u.Address,
+                    UserId = u.UserId,
+                    Quantity = u.Quantity,
+                    ItemId = u.ItemId,
+                    Price = u.Price
+                }).Where(x => x.UserId == Guid.Parse(id)).ToListAsync();
+
+                return await model;
+            }
+            catch (Exception)
+            {
+                var model = context.Transactions.Select(u => new UserOrdersViewModel()
+                {
+                    Confirmed = false,
+                    Shipped = false,
+                    Arrived = false,
+                    Paid = false,
+                    Country = "Error",
+                    Province = "Error",
+                    City = "Error",
+                    Zip = 0000,
+                    Address = "Error",
+                    Quantity = 0,
+                    Price = 0
+                }).Where(x => x.UserId == Guid.Parse(id)).ToListAsync();
+
+                return await model;
+            }
+
         }
 
         public async Task<IEnumerable<UserListViewModel>> GetUsers()

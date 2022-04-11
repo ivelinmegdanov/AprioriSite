@@ -1,5 +1,6 @@
 ﻿using AprioriSite.Core.Constants;
 using AprioriSite.Core.Models;
+using AprioriSite.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,14 @@ namespace AprioriSite.Controllers
 
         private readonly IUserService userService;
 
-        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IUserService _userService)
+        private readonly ApplicationDbContext context;
+
+        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IUserService _userService, ApplicationDbContext _context)
         {
             roleManager = _roleManager;
             userManager = _userManager;
             userService = _userService;
+            context = _context;
         }
 
         public IActionResult Index()
@@ -32,6 +36,13 @@ namespace AprioriSite.Controllers
             var users = await userService.GetUsers();
 
             return View(users);
+        }
+
+        public async Task<IActionResult> MyOrders(string id)
+        {
+            var order = await userService.GetUserOrders(id);
+
+            return View(order);
         }
 
         public async Task<IActionResult> EditProfile(string id)
@@ -51,12 +62,12 @@ namespace AprioriSite.Controllers
 
             if (await userService.UpdateUser(model))
             {
-                ViewData[MessageConstant.SuccessMessage] = "Успешен запис!";
+                ViewData[MessageConstant.SuccessMessage] = "Successful!";
                 return Redirect("/user/myprofile");
             }
             else
             {
-                ViewData[MessageConstant.ErrorMessage] = "Възникна грешка!";
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
             }
             return Ok();
         }

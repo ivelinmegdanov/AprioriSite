@@ -55,11 +55,6 @@ namespace AprioriSite.Core.Services
         {
             repo.AddAsync(new Transaction()
             {
-                Confirmed = model.Confirmed,
-                Shipped = model.Shipped,
-                Arrived = model.Arrived,
-                Paid = model.Paid,
-                Promocode = model.Promocode,
                 Country = model.Country,
                 Province = model.Province,
                 City = model.City,

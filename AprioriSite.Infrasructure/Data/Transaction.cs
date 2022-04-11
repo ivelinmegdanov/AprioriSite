@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AprioriSite.Infrasructure.Data
 {
 	public class Transaction
-	{
-		[Key]
-		public Guid Id { get; set; } = Guid.NewGuid();
+    {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-		[Required]
+        [Required]
 		public bool Confirmed { get; set; } = false;
 
 		[Required]

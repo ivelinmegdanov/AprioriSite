@@ -24,7 +24,7 @@
 			<div class="details__item">
 
 				<div class="item__image">
-					<img class="iphone" src="@Model.ImageUrl" alt="">
+					<img id ="customImage" class="iphone" src="" alt="">
 				</div>
 				<div class="item__details">
 					<div class="item__title">
@@ -146,6 +146,11 @@
 	</div>
 
 	<partial name="_Footer" />
+
+	<script>
+		let customImage = window.localStorage.getItem('customImage');
+		document.getElementById("customImage").src = customImage;
+	</script>
 
 	<!-- REQUIRED SCRIPTS -->
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

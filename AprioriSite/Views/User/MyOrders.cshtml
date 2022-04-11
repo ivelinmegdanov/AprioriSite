@@ -1,0 +1,42 @@
+﻿@using AprioriSite.Core.Models
+@model IEnumerable<UserOrdersViewModel>
+@{
+	ViewData["Title"] = "My orders";
+	Layout = null;
+}
+
+<head>
+	<title>@ViewData["Title"]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/css/myprofile.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+
+	<title>My Orders</title>
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+
+	<h1 class="heading"> My <span>Orders</span> </h1>
+	<h1 class="heading"> My <span>Orders</span> </h1>
+
+	@foreach (var order in Model)
+	{
+		<h6 class="text-muted f-w-400">@order.Address</h6>
+		<h6 class="text-muted f-w-400">@order.City</h6>
+		<h6 class="text-muted f-w-400">@order.Confirmed</h6>
+		<h6 class="text-muted f-w-400">@order.Quantity</h6>
+		<h6 class="text-muted f-w-400">@order.Price</h6>
+	}
+
+
+	<partial name="_Footer" />
+	<script src="~/js/script.js"></script>
+</body>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

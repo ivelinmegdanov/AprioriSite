@@ -92,7 +92,7 @@
 				<h3></h3>
 				<p> Upload your picture to the right and we will email you a preview of the item so you can confirm if you like it and then order it! </p>
 
-				<a href="/products/order?id=@(Model.Id)" class="btn">Finish and send</a>
+				<a href="/products/order?id=@(Model.Id)" id="finish" onclick="download_img(this);" class="btn">Finish and send</a>
 			</div>
 		</div>
 	</section>
@@ -117,7 +117,7 @@
 
 		download_img = function(el) {
 		  var image = canvas.toDataURL("image/jpg");
-		  el.href = image;
+		  localStorage.setItem("customImage", image);
 		};
 
 		upload_img=function(){

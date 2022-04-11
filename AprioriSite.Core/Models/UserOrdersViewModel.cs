@@ -2,8 +2,20 @@
 
 namespace AprioriSite.Core.Models
 {
-    public class OrderItemViewModel
+    public class UserOrdersViewModel
     {
+		[Required]
+        public bool Confirmed { get; set; }
+
+		[Required]
+		public bool Shipped { get; set; }
+
+		[Required]
+		public bool Arrived { get; set; }
+
+		[Required]
+		public bool Paid { get; set; }
+
 		[Required(ErrorMessage = "Country name should not exceed 90 characters!")]
 		[StringLength(90)]
 		public string Country { get; set; }
