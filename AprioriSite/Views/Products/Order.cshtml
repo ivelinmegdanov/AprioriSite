@@ -1,5 +1,5 @@
 ﻿@using AprioriSite.Core.Models
-@model OrderAndItemViewModel
+@model ItemsDetailsViewModel
 
 
 @{
@@ -35,7 +35,7 @@
 						<div class="item__title">
 						</div>
 						<div class="item__price">
-							@string.Format("{0:n2}", @Model.ItemsDetailsViewModel.Price) $
+							@*@string.Format("{0:n2}", @Model.Price)*@ $
 						</div>
 						<div class="item__quantity">
 							Quantity:
@@ -54,7 +54,7 @@
 						</div>
 						<div class="item__description">
 							<ul style="">
-								<li>@Model.ItemsDetailsViewModel.Description</li>
+								<li>@*@Model.Description*@</li>
 							</ul>
 
 						</div>
@@ -83,7 +83,7 @@
 							</div>
 							<div class="form__cc">
 								<div class="row">
-									<div class="field">
+									@*<div class="field">
 										<div class="title">
 											First Name
 										</div>
@@ -138,7 +138,7 @@
 										<input asp-for="OrderItemViewModel.Zip" type="number" class="form-control input txt" aria-required="true" />
 										<span asp-validation-for="OrderItemViewModel.Zip" class="text-danger"></span>
 									</div>
-								</div>
+								</div>*@
 							</div>
 						</div>
 					</div>
