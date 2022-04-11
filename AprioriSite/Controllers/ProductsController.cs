@@ -1,4 +1,5 @@
-﻿using AprioriSite.Core.Contracts;
+﻿using AprioriSite.Core.Constants;
+using AprioriSite.Core.Contracts;
 using AprioriSite.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +8,6 @@ namespace AprioriSite.Controllers
     public class ProductsController : BaseController
     {
         private readonly IProductsService productsService;
-
-
 
         public ProductsController(IProductsService _productsService)
         {
@@ -39,18 +38,29 @@ namespace AprioriSite.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Customise(OrderItemViewModel model)
+        public IActionResult Order()
         {
-            productsService.OrderItem(model);
-
-            return Redirect("/user/orders");
+            return View();
         }
 
-        public IActionResult Order(Guid id)
+        [HttpPost]
+        public async Task<IActionResult> Order(OrderAndItemViewModel model)
         {
-            var model = productsService.GetItemsById(id);
-            return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (await productsService.OrderItem(model.OrderItemViewModel))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Successful!";
+                return Redirect("/user/myprofile");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
+            return Ok();
         }
     }
 }

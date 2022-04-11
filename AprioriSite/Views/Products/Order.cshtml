@@ -1,4 +1,8 @@
-﻿@{
+﻿@using AprioriSite.Core.Models
+@model OrderAndItemViewModel
+
+
+@{
 	ViewData["Title"] = "Order";
 	Layout = null;
 }
@@ -18,79 +22,80 @@
 
 	<section class="content">
 
-		<div class="containerorder">
-		</div>
-		<div class="details shadow">
-			<div class="details__item">
-
-				<div class="item__image">
-					<img id ="customImage" class="iphone" src="" alt="">
-				</div>
-				<div class="item__details">
-					<div class="item__title">
-						@Model.Label
-					</div>
-					<div class="item__price">
-						@string.Format("{0:n2}", @Model.Price) $
-					</div>
-					<div class="item__quantity">
-						Quantity: 
-						<select class="input ddl">
-							<option selected>01</option>
-							<option>02</option>
-							<option>03</option>
-							<option>04</option>
-							<option>05</option>
-							<option>06</option>
-							<option>07</option>
-							<option>08</option>
-							<option>09</option>
-							<option>10</option>
-						</select>
-					</div>
-					<div class="item__description">
-						<ul style="">
-							<li>@Model.Description</li>
-						</ul>
-
-					</div>
-
-				</div>
+		<form id="order" method="post">
+			<div class="containerorder">
 			</div>
+			<div class="details shadow">
+				<div class="details__item">
 
-		</div>
-		<div class="discount"></div>
+					<div class="item__image">
+						<img id="customImage" class="iphone" src="" alt="">
+					</div>
+					<div class="item__details">
+						<div class="item__title">
+						</div>
+						<div class="item__price">
+							@string.Format("{0:n2}", @Model.ItemsDetailsViewModel.Price) $
+						</div>
+						<div class="item__quantity">
+							Quantity:
+							<select class="input ddl">
+								<option selected>01</option>
+								<option>02</option>
+								<option>03</option>
+								<option>04</option>
+								<option>05</option>
+								<option>06</option>
+								<option>07</option>
+								<option>08</option>
+								<option>09</option>
+								<option>10</option>
+							</select>
+						</div>
+						<div class="item__description">
+							<ul style="">
+								<li>@Model.ItemsDetailsViewModel.Description</li>
+							</ul>
 
-		<div class="containerorder">
-			<div class="payment">
-				<div class="payment__title">
-					Payment Method
-				</div>
-				<div class="payment__types">
-					<div class="payment__type payment__type--cc active">
-						On Arrival (SPEEDY)
+						</div>
+
 					</div>
 				</div>
 
-				<div class="payment__info">
-					<div class="payment__cc">
-						<div class="payment__title">
-							<i class="icon icon-user"></i>Personal Information
+			</div>
+			<div class="discount"></div>
+
+			<div class="containerorder">
+				<div class="payment">
+					<div class="payment__title">
+						Payment Method
+					</div>
+					<div class="payment__types">
+						<div class="payment__type payment__type--cc active">
+							On Arrival (SPEEDY)
 						</div>
-						<form>
+					</div>
+
+					<div class="payment__info">
+						<div class="payment__cc">
+							<div class="payment__title">
+								<i class="icon icon-user"></i>Personal Information
+							</div>
 							<div class="form__cc">
 								<div class="row">
 									<div class="field">
 										<div class="title">
 											First Name
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.FirstName" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.FirstName" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Last Name
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.LastName" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.LastName" class="text-danger"></span>
 									</div>
 								</div>
 								<div class="row">
@@ -98,13 +103,15 @@
 										<div class="title">
 											Country
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.Country" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.Country" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Province
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.Province" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.Province" class="text-danger"></span>
 									</div>
 								</div>
 								<div class="row">
@@ -112,13 +119,15 @@
 										<div class="title">
 											City
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.City" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.City" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Address
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.Address" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.Address" class="text-danger"></span>
 									</div>
 								</div>
 								<div class="row">
@@ -126,22 +135,20 @@
 										<div class="title">
 											Zip
 										</div>
-										<input type="text" class="input txt" />
+										<input asp-for="OrderItemViewModel.Zip" type="number" class="form-control input txt" aria-required="true" />
+										<span asp-validation-for="OrderItemViewModel.Zip" class="text-danger"></span>
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="containerorder">
-			<div class="actions">
-				<a href="#" class="btn action__submit">
-					Place your Order
-					<i class="icon icon-arrow-right-circle"></i>
-				</a>
-			</div>
+			<div class="containerorder">
+				<div class="actions">
+					<button id="login-submit" type="submit" class="btn action__submit">Place your Order</button>
+				</div>
+		</form>
 	</section>
 	</div>
 

@@ -8,7 +8,16 @@ namespace AprioriSite.Infrasructure.Data
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
+		[Required]
+        public string CustomImage { get; set; }
+
         [Required]
+        public string FirstName { get; set; }
+
+		[Required]
+		public string LastName { get; set; }
+
+		[Required]
 		public bool Confirmed { get; set; } = false;
 
 		[Required]

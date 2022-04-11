@@ -9,6 +9,6 @@ namespace AprioriSite.Core.Contracts
 
         ItemsDetailsViewModel? GetItemsById(Guid id);
 
-        void OrderItem(OrderItemViewModel model);
+        Task<bool> OrderItem(OrderItemViewModel model);
     }
 }

@@ -51,10 +51,14 @@ namespace AprioriSite.Core.Services
                 .FirstOrDefault();
         }
 
-        public void OrderItem(OrderItemViewModel model)
+        public async Task<bool> OrderItem(OrderItemViewModel model)
         {
-            repo.AddAsync(new Transaction()
+            bool result = false;
+
+            await repo.AddAsync(new Transaction()
             {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 Country = model.Country,
                 Province = model.Province,
                 City = model.City,
@@ -66,7 +70,11 @@ namespace AprioriSite.Core.Services
                 Price = model.Price
             });
 
-            repo.SaveChanges();
+            result = true;
+
+            await repo.SaveChangesAsync();
+
+            return result;
         }
     }
 }
