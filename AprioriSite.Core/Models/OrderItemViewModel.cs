@@ -4,6 +4,9 @@ namespace AprioriSite.Core.Models
 {
     public class OrderItemViewModel
     {
+		[Required]
+		public string CustomImage { get; set; }
+
 		[Required(ErrorMessage = "First name cannot be empty!")]
 		[StringLength(50)]
 		public string FirstName { get; set; }

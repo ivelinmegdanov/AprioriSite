@@ -38,27 +38,23 @@ namespace AprioriSite.Controllers
             return View(model);
         }
 
-        public IActionResult Order()
+        public IActionResult Order(Guid id)
         {
-            return View();
+            var model = productsService.GetItemsAndOrdersById(id);
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Order(OrderAndItemViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (await productsService.OrderItem(model))
             {
-                return View(model);
-            }
-
-            if (await productsService.OrderItem(model.OrderItemViewModel))
-            {
-                ViewData[MessageConstant.SuccessMessage] = "Successful!";
-                return Redirect("/user/myprofile");
+                ViewData[MessageConstant.SuccessMessage] = "Thanks for your order!";
+                return Redirect("/");
             }
             else
             {
-                ViewData[MessageConstant.ErrorMessage] = "Error!";
+                ViewData[MessageConstant.ErrorMessage] = "The was an error with your order!";
             }
             return Ok();
         }

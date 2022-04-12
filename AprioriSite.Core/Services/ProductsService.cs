@@ -33,8 +33,8 @@ namespace AprioriSite.Core.Services
                 });
         }
 
-		public ItemsDetailsViewModel? GetItemsById(Guid id)
-		{
+        public ItemsDetailsViewModel? GetItemsById(Guid id)
+        {
             return repo.All<Item>()
                 .Where(c => c.Id == id)
                 .Select(c => new ItemsDetailsViewModel()
@@ -45,29 +45,50 @@ namespace AprioriSite.Core.Services
                     Label = c.Label,
                     Description = c.Description,
                     Price = c.Price,
-                    Category= c.Categoty,
+                    Category = c.Categoty,
                     Subcategory = c.Categoty
                 })
                 .FirstOrDefault();
         }
 
-        public async Task<bool> OrderItem(OrderItemViewModel model)
+        public OrderAndItemViewModel? GetItemsAndOrdersById(Guid id)
+        {
+            return repo.All<Item>()
+                .Where(c => c.Id == id)
+                .Select(c => new OrderAndItemViewModel()
+                {
+                    ItemsDetailsViewModel = new ItemsDetailsViewModel()
+                    {
+                        Id = id,
+                        ImageUrl = c.ImageUrl,
+                        Label = c.Label,
+                        Description = c.Description,
+                        Price = c.Price,
+                        Category = c.Categoty,
+                        Subcategory = c.Categoty
+                    }
+                })
+                .FirstOrDefault();
+        }
+
+        public async Task<bool> OrderItem(OrderAndItemViewModel model)
         {
             bool result = false;
 
             await repo.AddAsync(new Transaction()
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Country = model.Country,
-                Province = model.Province,
-                City = model.City,
-                Zip = model.Zip,
-                Address = model.Address,
-                ItemId = model.ItemId,
-                Quantity = model.Quantity,
-                UserId = model.UserId,
-                Price = model.Price
+                CustomImage = model.OrderItemViewModel.CustomImage,
+                FirstName = model.OrderItemViewModel.FirstName,
+                LastName = model.OrderItemViewModel.LastName,
+                Country = model.OrderItemViewModel.Country,
+                Province = model.OrderItemViewModel.Province,
+                City = model.OrderItemViewModel.City,
+                Zip = model.OrderItemViewModel.Zip,
+                Address = model.OrderItemViewModel.Address,
+                ItemId = model.OrderItemViewModel.ItemId,
+                Quantity = model.OrderItemViewModel.Quantity,
+                UserId = model.OrderItemViewModel.UserId,
+                Price = model.OrderItemViewModel.Price
             });
 
             result = true;
