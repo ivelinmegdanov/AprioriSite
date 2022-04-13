@@ -92,5 +92,12 @@ namespace AprioriSite.Areas.Admin.Controllers
 
             return Ok();
         }
+
+        public async Task<IActionResult> ManageUserOrders()
+        {
+            var userOrders = await userService.GetAllUserOrders();
+
+            return View(userOrders);
+        }
     }
 }

@@ -4,9 +4,16 @@ namespace AprioriSite.Core.Models
 {
     public class UserOrdersViewModel
     {
-		[Required]
+        public Guid Id { get; set; }
+
+        [Required]
 		public string CustomImage { get; set; }
 
+		[Required]
+		public string Size { get; set; }
+
+		[Required]
+		public string OrderDate { get; set; }
 
 		[Required(ErrorMessage = "First name cannot be empty!")]
 		[StringLength(50)]

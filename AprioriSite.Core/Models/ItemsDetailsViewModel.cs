@@ -7,6 +7,8 @@ namespace AprioriSite.Core.Models
     {
 		public Guid Id { get; set; }
 
+		public bool AllowSize { get; set; }
+
 		public string ImageUrl { get; set; }
 
 		public string Label { get; set; }

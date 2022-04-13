@@ -5,7 +5,7 @@
 }
 
 .logo {
-    background-color: #eeeeeea8
+    background-color: rgb(238 238 238 / 0%);
 }
 
 .totals tr td {
@@ -23,4 +23,98 @@
 .product-qty span {
     font-size: 12px;
     color: #dedbdb
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.header {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    -webkit-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 9%;
+    background: #fff;
+}
+
+    .header .logo {
+        font-size: 1.6rem;
+        color: #dc3545;
+        font-weight: bolder;
+        background-color: transparent;
+    }
+
+.logo {
+    background-color: #eeeeeea8;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.header .navbar a {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0 1rem;
+}
+
+.header .icons div {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.header .icons div{
+    color: #fff;
+    cursor: pointer;
+    -webkit-text-stroke: 0.1rem #130f40;
+}
+
+.action {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+}
+
+    .action .profile {
+        position: relative;
+    }
+
+.header .icons a {
+    font-size: 1.7rem;
+    margin-left: 2rem;
+    color: #fff;
+    cursor: pointer;
+    -webkit-text-stroke: 0.1rem #130f40;
+}
+
+.action .menu {
+    position: absolute;
+    top: 120px;
+    right: -10px;
+    padding: 10px 20px;
+    background: #fff;
+    width: 200px;
+    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
 }

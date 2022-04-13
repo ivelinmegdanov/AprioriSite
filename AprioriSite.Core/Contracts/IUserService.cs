@@ -13,6 +13,8 @@ namespace AprioriSite.Core.Constants
 
         Task<IEnumerable<UserOrdersViewModel>> GetUserOrders(string id);
 
+        Task<IEnumerable<UserOrdersViewModel>> GetAllUserOrders();
+
         Task<ApplicationUser> GetUserById(string id);
 
         void AddItem(AddItemViewModel model);

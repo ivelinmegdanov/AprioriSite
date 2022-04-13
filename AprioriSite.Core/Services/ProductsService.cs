@@ -42,6 +42,7 @@ namespace AprioriSite.Core.Services
 
                     Id = id,
                     ImageUrl = c.ImageUrl,
+                    AllowSize = c.AllowSize,
                     Label = c.Label,
                     Description = c.Description,
                     Price = c.Price,
@@ -61,6 +62,7 @@ namespace AprioriSite.Core.Services
                     {
                         Id = id,
                         ImageUrl = c.ImageUrl,
+                        AllowSize = c.AllowSize,
                         Label = c.Label,
                         Description = c.Description,
                         Price = c.Price,
@@ -77,6 +79,8 @@ namespace AprioriSite.Core.Services
 
             await repo.AddAsync(new Transaction()
             {
+                OrderDate = model.OrderItemViewModel.OrderDate,
+                Size = model.OrderItemViewModel.Size,
                 CustomImage = model.OrderItemViewModel.CustomImage,
                 FirstName = model.OrderItemViewModel.FirstName,
                 LastName = model.OrderItemViewModel.LastName,

@@ -1,0 +1,112 @@
+﻿@using AprioriSite.Core.Models
+
+@model IEnumerable<UserOrdersViewModel>
+
+@{
+	ViewData["Title"] = "Admin Panel";
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+	<style>
+		table, th, td {
+			text-align: center;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<partial name="_MainMenu" />
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<h1 class="heading"> Manage <span>Users</span> Orders </h1>
+				<h1 class="heading"> Manage <span>Users</span> Orders </h1>
+				@foreach (var user in Model)
+				{
+					<div class="users">
+						<table class="table table-hover text-nowrap">
+							<tbody>
+								<img src="@user.CustomImage" width="90"> 
+								<table style="width:100%">
+									<tr>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>User Id</th>
+									</tr>
+									<tr>
+										<td>@user.FirstName</td>
+										<td>@user.LastName</td>
+										<td>@user.UserId</td>
+									</tr>
+								</table>
+								<table style="width:100%">
+									<tr>
+										<th>Order Date</th>
+										<th>Item Id</th>
+										<th>Quantity</th>
+										<th>Size</th>
+										<th>Price</th>
+									</tr>
+									<tr>
+										<td>@user.OrderDate</td>
+										<td>@user.ItemId</td>
+										<td>@user.Quantity</td>
+										<td>@user.Size</td>
+										<td>@user.Price</td>
+									</tr>
+								</table>
+								<table style="width:100%">
+									<tr>
+										<th>Country</th>
+										<th>Province</th>
+										<th>City</th>
+										<th>Zip</th>
+										<th>Address</th>
+									</tr>
+									<tr>
+										<td>@user.Country</td>
+										<td>@user.Province</td>
+										<td>@user.City</td>
+										<td>@user.Zip</td>
+										<td>@user.Address</td>
+									</tr>
+								</table>
+								<table style="width:100%">
+									<tr>
+										<th>Confirmed</th>
+										<th>Shipped</th>
+										<th>Arrived</th>
+										<th>Paid</th>
+									</tr>
+									<tr>
+										<td>@user.Confirmed</td>
+										<td>@user.Shipped</td>
+										<td>@user.Arrived</td>
+										<td>@user.Paid</td>
+									</tr>
+								</table>
+								<tr>
+									<h2>Actions</h2>
+									<h3>
+										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order</a>
+										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order shipped</a>
+										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order arrival</a>
+										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm user paid</a>
+									</h3>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				}
+			</div>
+
+		</div>
+	</div>
+	<script src="~/js/script.js"></script>
+</body>

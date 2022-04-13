@@ -9,6 +9,12 @@ namespace AprioriSite.Infrasructure.Data
         public Guid Id { get; set; } = Guid.NewGuid();
 
 		[Required]
+        public string OrderDate { get; set; }
+
+		[Required]
+		public string Size { get; set; }
+
+		[Required]
         public string CustomImage { get; set; }
 
         [Required]

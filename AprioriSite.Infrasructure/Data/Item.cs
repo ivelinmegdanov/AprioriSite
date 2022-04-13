@@ -34,6 +34,9 @@ namespace AprioriSite.Infrasructure.Data
         [Required]
         public int Upvotes { get; set; } = 0;
 
+        [Required]
+        public bool AllowSize { get; set; }
+
         public string? Subcategory { get; set; }
     }
 }

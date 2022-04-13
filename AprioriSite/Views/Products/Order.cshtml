@@ -42,8 +42,41 @@
 						</div>
 						<div class="item__quantity">
 							Quantity:
-							<input asp-for="OrderItemViewModel.Quantity" type="number" id="quantity" value="1" name="tentacles" min="1" max="99" step="1" onkeydown="return false">
+							<select asp-for="OrderItemViewModel.Quantity" type="number" id="quantity">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="6">7</option>
+									<option value="6">8</option>
+									<option value="6">9</option>
+									<option value="6">10</option>
+								</select>
+								<span asp-validation-for="OrderItemViewModel.Quantity" class="text-danger"></span>
 						</div>
+						@if (Model.ItemsDetailsViewModel.AllowSize)
+						{
+							<div class="item__size">
+								Size:
+								<select asp-for="OrderItemViewModel.Size">
+									<option value="XS">XS</option>
+									<option value="S">S</option>
+									<option value="M">M</option>
+									<option value="L">L</option>
+									<option value="XL">XL</option>
+									<option value="XXL">XXL</option>
+								</select>
+								<span asp-validation-for="OrderItemViewModel.Size" class="text-danger"></span>
+							</div>
+						}
+						else
+						{
+							<select asp-for="OrderItemViewModel.Size">
+									<option value="Only one size">Only one size</option>
+								</select>
+						}
 						<div class="item__description">
 							<ul style="">
 								<li>@Model.ItemsDetailsViewModel.Description</li>
@@ -79,14 +112,14 @@
 										<div class="title">
 											First Name
 										</div>
-										<input asp-for="OrderItemViewModel.FirstName" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.FirstName" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.FirstName" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Last Name
 										</div>
-										<input asp-for="OrderItemViewModel.LastName" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.LastName" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.LastName" class="text-danger"></span>
 									</div>
 								</div>
@@ -95,14 +128,14 @@
 										<div class="title">
 											Country
 										</div>
-										<input asp-for="OrderItemViewModel.Country" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.Country" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.Country" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Province
 										</div>
-										<input asp-for="OrderItemViewModel.Province" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.Province" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.Province" class="text-danger"></span>
 									</div>
 								</div>
@@ -111,14 +144,14 @@
 										<div class="title">
 											City
 										</div>
-										<input asp-for="OrderItemViewModel.City" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.City" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.City" class="text-danger"></span>
 									</div>
 									<div class="field">
 										<div class="title">
 											Address
 										</div>
-										<input asp-for="OrderItemViewModel.Address" class="form-control input txt" aria-required="true" required/>
+										<input asp-for="OrderItemViewModel.Address" class="form-control input txt" aria-required="true" required />
 										<span asp-validation-for="OrderItemViewModel.Address" class="text-danger"></span>
 									</div>
 								</div>
@@ -127,12 +160,13 @@
 										<div class="title">
 											Zip
 										</div>
-										<input asp-for="OrderItemViewModel.Zip" type="number" class="form-control input txt" aria-required="true" min="1000" max="89049" required/>
+										<input asp-for="OrderItemViewModel.Zip" type="number" class="form-control input txt" aria-required="true" min="1000" max="89049" required />
 										<span asp-validation-for="OrderItemViewModel.Zip" class="text-danger"></span>
 									</div>
 								</div>
 								<input asp-for="OrderItemViewModel.UserId" type="hidden" id="UserIdAsp" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
 								<input asp-for="OrderItemViewModel.ItemId" type="hidden" id="ItemIdAsp" value="@Model.ItemsDetailsViewModel.Id">
+								<input asp-for="OrderItemViewModel.OrderDate" type="hidden" id="OrderDateAsp" value="">
 								<input asp-for="OrderItemViewModel.Price" type="hidden" id="PriceAsp" value="">
 								<input asp-for="OrderItemViewModel.CustomImage" type="hidden" id="CustomImageAsp" value="">
 							</div>
@@ -151,6 +185,7 @@
 	<partial name="_Footer" />
 
 	<script>
+		document.getElementById("OrderDateAsp").value = Date();
 		document.getElementById("PriceAsp").value = parseFloat(document.getElementById("item__price").textContent);
 		let dynamicPrice = document.getElementById("item__price");
 		let itemPrice = parseFloat(dynamicPrice.textContent);

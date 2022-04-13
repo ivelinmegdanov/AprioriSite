@@ -69,6 +69,12 @@ namespace AprioriSite.Core.Services
             {
                 var model = context.Transactions.Select(u => new UserOrdersViewModel()
                 {
+                    Id = u.Id,
+                    Size = u.Size,
+                    OrderDate = u.OrderDate,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    CustomImage = u.CustomImage,
                     Confirmed = u.Confirmed,
                     Shipped = u.Shipped,
                     Arrived = u.Arrived,
@@ -90,6 +96,12 @@ namespace AprioriSite.Core.Services
             {
                 var model = context.Transactions.Select(u => new UserOrdersViewModel()
                 {
+                    Id = new Guid(),
+                    Size = "Error",
+                    OrderDate = "Error",
+                    FirstName = "Error",
+                    LastName = "Error",
+                    CustomImage = "Error",
                     Confirmed = false,
                     Shipped = false,
                     Arrived = false,
@@ -102,6 +114,61 @@ namespace AprioriSite.Core.Services
                     Quantity = 0,
                     Price = 0
                 }).Where(x => x.UserId == Guid.Parse(id)).ToListAsync();
+
+                return await model;
+            }
+
+        }
+
+        public async Task<IEnumerable<UserOrdersViewModel>> GetAllUserOrders()
+        {
+            try
+            {
+                var model = context.Transactions.Select(u => new UserOrdersViewModel()
+                {
+                    Size = u.Size,
+                    OrderDate = u.OrderDate,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    CustomImage = u.CustomImage,
+                    Confirmed = u.Confirmed,
+                    Shipped = u.Shipped,
+                    Arrived = u.Arrived,
+                    Paid = u.Paid,
+                    Country = u.Country,
+                    Province = u.Province,
+                    City = u.City,
+                    Zip = u.Zip,
+                    Address = u.Address,
+                    UserId = u.UserId,
+                    Quantity = u.Quantity,
+                    ItemId = u.ItemId,
+                    Price = u.Price
+                }).ToListAsync();
+
+                return await model;
+            }
+            catch (Exception)
+            {
+                var model = context.Transactions.Select(u => new UserOrdersViewModel()
+                {
+                    Size = "Error",
+                    OrderDate = "Error",
+                    FirstName = "Error",
+                    LastName = "Error",
+                    CustomImage = "Error",
+                    Confirmed = false,
+                    Shipped = false,
+                    Arrived = false,
+                    Paid = false,
+                    Country = "Error",
+                    Province = "Error",
+                    City = "Error",
+                    Zip = 0000,
+                    Address = "Error",
+                    Quantity = 0,
+                    Price = 0
+                }).ToListAsync();
 
                 return await model;
             }

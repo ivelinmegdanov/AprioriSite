@@ -78,7 +78,6 @@
 	<div class="customiseCenter">
 		<canvas class="canvasedit" id="canvas" width=346 height=346></canvas>
 		<p></p>
-		<a id="download" download="myImage.jpg" href="" onclick="download_img(this);">Download to myImage.jpg</a>
 		<form action="/action_page.php">
 			<input type="file" id="myFile" accept="image/*" onchange="upload_img()" name="filename">
 		</form>
@@ -90,7 +89,7 @@
 				<p>@Model.Category - @Model.Subcategory</p>
 				<h3>@Model.Label</h3>
 				<h3></h3>
-				<p> Upload your picture to the right and we will email you a preview of the item so you can confirm if you like it and then order it! </p>
+				<p> Upload your image and place it wherever you want! </p>
 
 				<a href="/products/order?id=@(Model.Id)" id="finish" onclick="download_img(this);" class="btn">Finish and send</a>
 			</div>

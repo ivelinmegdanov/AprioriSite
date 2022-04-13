@@ -4,6 +4,7 @@ using AprioriSite.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AprioriSite.Infrasructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220413154058_OrderDate-Clors-added")]
+    partial class OrderDateClorsadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,6 @@ namespace AprioriSite.Infrasructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("AllowSize")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Categoty")
                         .IsRequired()
@@ -84,6 +83,10 @@ namespace AprioriSite.Infrasructure.Migrations
                         .HasMaxLength(189)
                         .HasColumnType("nvarchar(189)");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Confirmed")
                         .HasColumnType("bit");
 
@@ -130,10 +133,6 @@ namespace AprioriSite.Infrasructure.Migrations
 
                     b.Property<bool>("Shipped")
                         .HasColumnType("bit");
-
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
