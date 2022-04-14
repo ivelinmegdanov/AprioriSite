@@ -21,22 +21,6 @@ namespace AprioriSite.Core.Services
             context = _context;
         }
 
-        public async Task<bool> ConfirmOrder(UserOrdersViewModel model)
-        {
-            bool result = false;
-            var user = await repo.GetByIdAsync<UserOrdersViewModel>(model.Id);
-
-            if (user != null)
-            {
-                user.Confirmed = true;
-
-                await repo.SaveChangesAsync();
-                result = true;
-            }
-
-            return result;
-        }
-
         public void AddItem(AddItemViewModel model)
         {
             repo.AddAsync(new Item()
@@ -265,6 +249,22 @@ namespace AprioriSite.Core.Services
                 result = true;
             }
             
+            return result;
+        }
+
+        public async Task<bool> ConfirmOrder(UserOrdersViewModel model)
+        {
+            bool result = false;
+            var order = await repo.GetByIdAsync<Transaction>(model.Id);
+
+            if (order != null)
+            {
+                order.Confirmed = true;
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+
             return result;
         }
     }

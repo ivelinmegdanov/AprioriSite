@@ -96,7 +96,7 @@ namespace AprioriSite.Areas.Admin.Controllers
             if (await userService.DeleteUser(model))
             {
                 ViewData[MessageConstant.SuccessMessage] = "Success!";
-                return Redirect("/admin/user/adminpanel");
+                return Redirect("/admin/user/manageusers");
             }
             else
             {
@@ -123,14 +123,18 @@ namespace AprioriSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult ManageUserOrders(UserOrdersViewModel model)
+        public async Task<IActionResult> ManageUserOrders(UserOrdersViewModel model)
         {
-            var successfull = userService.ConfirmOrder(model);
+            var successfull = await userService.ConfirmOrder(model);
 
-            //if (successfull == true) 
-            //{
-            //    return Redirect("/admin/user/adminpanel");
-            //}
+            if (successfull)
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Success!";
+            }
+            else 
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
 
             return Redirect("/admin/user/manageuserorders");
         }
@@ -143,7 +147,7 @@ namespace AprioriSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async  Task<IActionResult> Emails(EmailViewModel model)
+        public async Task<IActionResult> Emails(EmailViewModel model)
         {
             if (await userService.DeleteEmail(model))
             {
