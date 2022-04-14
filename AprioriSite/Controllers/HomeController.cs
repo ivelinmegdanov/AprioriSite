@@ -1,4 +1,6 @@
 ﻿using AprioriSite.Core.Constants;
+using AprioriSite.Core.Contracts;
+using AprioriSite.Core.Models;
 using AprioriSite.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -8,10 +10,12 @@ namespace AprioriSite.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IEmailService emailService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IEmailService _emailService)
         {
             _logger = logger;
+            emailService = _emailService;
         }
 
         public IActionResult Howitworks()
@@ -24,12 +28,15 @@ namespace AprioriSite.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        public IActionResult ContactUs(EmailViewModel model)
         {
-            return View();
+            emailService.AddEmail(model);
+
+            return Redirect("/home/contactus");
         }
 
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }

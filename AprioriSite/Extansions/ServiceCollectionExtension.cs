@@ -14,6 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductsService, ProductsService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             return services;
         }

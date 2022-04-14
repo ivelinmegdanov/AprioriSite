@@ -134,5 +134,27 @@ namespace AprioriSite.Areas.Admin.Controllers
 
             return Redirect("/admin/user/manageuserorders");
         }
+
+        public async Task<IActionResult> Emails()
+        {
+            var userEmails = await userService.GetAllEmails();
+
+            return View(userEmails);
+        }
+
+        [HttpPost]
+        public async  Task<IActionResult> Emails(EmailViewModel model)
+        {
+            if (await userService.DeleteEmail(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Success!";
+                return Redirect("/admin/user/emails");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
+            return Ok();
+        }
     }
 }

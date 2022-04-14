@@ -25,6 +25,8 @@ namespace AprioriSite.Infrastructure.Data
 
         public DbSet<Transaction> Transactions { get; set; }
 
-        public DbSet<Item> Items { get; set; }
+		public DbSet<Email> Emails { get; set; }
+
+		public DbSet<Item> Items { get; set; }
     }
 }

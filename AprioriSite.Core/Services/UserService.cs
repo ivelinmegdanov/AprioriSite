@@ -21,7 +21,7 @@ namespace AprioriSite.Core.Services
             context = _context;
         }
 
-        public async Task<bool> ConfirmOrder(UserOrdersViewModel model) 
+        public async Task<bool> ConfirmOrder(UserOrdersViewModel model)
         {
             bool result = false;
             var user = await repo.GetByIdAsync<UserOrdersViewModel>(model.Id);
@@ -136,6 +136,21 @@ namespace AprioriSite.Core.Services
             }
 
         }
+        public async Task<IEnumerable<EmailViewModel>> GetAllEmails()
+        {
+            var model = context.Emails.Select(u => new EmailViewModel()
+            {
+                Id = u.Id,
+                UserId = u.UserId,
+                Name = u.Name,
+                UserEmail = u.UserEmail,
+                PhoneNumber = u.PhoneNumber,
+                Subject = u.Subject,
+                Message = u.Message
+            }).ToListAsync();
+
+            return await model;
+        }
 
         public async Task<IEnumerable<UserOrdersViewModel>> GetAllUserOrders()
         {
@@ -234,6 +249,22 @@ namespace AprioriSite.Core.Services
                 result = true;
             }
 
+            return result;
+        }
+
+        public async Task<bool> DeleteEmail(EmailViewModel model)
+        {
+            bool result = false;
+            var email = await repo.GetByIdAsync<Email>(model.Id);
+
+            if (email != null)
+            {
+                repo.Delete(email);
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+            
             return result;
         }
     }
