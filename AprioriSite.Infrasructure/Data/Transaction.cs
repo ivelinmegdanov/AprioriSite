@@ -35,8 +35,6 @@ namespace AprioriSite.Infrasructure.Data
 		[Required]
 		public bool Paid { get; set; } = false;
 
-		public string? Promocode { get; set; }
-
 		[Required(ErrorMessage = "Country name should not exceed 90 characters!")]
 		[StringLength(90)]
 		public string Country { get; set; }

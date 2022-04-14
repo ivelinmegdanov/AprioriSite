@@ -15,8 +15,6 @@ namespace AprioriSite.Infrasructure.Data
         [Required(ErrorMessage = "ImageUrl is required!")]
         public string ImageUrl { get; set; }
 
-        public string? CustomPicture { get; set; }
-
         [Required]
         [Column(TypeName ="money")]
         public decimal Price { get; set; }
@@ -26,9 +24,6 @@ namespace AprioriSite.Infrasructure.Data
 
         [Required(ErrorMessage = "The category of the item is required and must be below 20 characters!")]
         public string Categoty { get; set; }
-
-        [Required]
-        public int Upvotes { get; set; } = 0;
 
         [Required]
         public bool AllowSize { get; set; }

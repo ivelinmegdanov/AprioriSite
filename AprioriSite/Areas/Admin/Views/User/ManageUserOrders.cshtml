@@ -30,87 +30,83 @@
 				<h1 class="heading"> Manage <span>Users</span> Orders</h1>
 				<h2><a asp-action="AdminPanel">Back to Admin Panel</a> </h2>
 				<p></p>
-				  <form id="manageuserorders" method="post">
 				@foreach (var order in Model)
 				{
-					<input type="hidden" name="Id" value="@order.Id" />
-					<div class="users">
-						<table class="table table-hover text-nowrap">
-							<tbody>
-								<img src="@order.CustomImage" width="90"> 
-								<table style="width:100%">
+					<form id="manageuserorders" method="post">
+						<input type="hidden" name="Id" value="@order.Id" />
+						<div class="users">
+							<table class="table table-hover text-nowrap">
+								<tbody>
+									<img src="@order.CustomImage" width="90">
+									<table style="width:100%">
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>User Id</th>
+										</tr>
+										<tr>
+											<td>@order.FirstName</td>
+											<td>@order.LastName</td>
+											<td>@order.UserId</td>
+										</tr>
+									</table>
+									<table style="width:100%">
+										<tr>
+											<th>Order Date</th>
+											<th>Item Id</th>
+											<th>Quantity</th>
+											<th>Size</th>
+											<th>Price</th>
+										</tr>
+										<tr>
+											<td>@order.OrderDate</td>
+											<td>@order.ItemId</td>
+											<td>@order.Quantity</td>
+											<td>@order.Size</td>
+											<td>@order.Price</td>
+										</tr>
+									</table>
+									<table style="width:100%">
+										<tr>
+											<th>Country</th>
+											<th>Province</th>
+											<th>City</th>
+											<th>Zip</th>
+											<th>Address</th>
+										</tr>
+										<tr>
+											<td>@order.Country</td>
+											<td>@order.Province</td>
+											<td>@order.City</td>
+											<td>@order.Zip</td>
+											<td>@order.Address</td>
+										</tr>
+									</table>
+									<table style="width:100%">
+										<tr>
+											<th>Confirmed</th>
+											<th>Shipped</th>
+											<th>Arrived</th>
+											<th>Paid</th>
+										</tr>
+										<tr>
+											<td>@order.Confirmed</td>
+											<td>@order.Shipped</td>
+											<td>@order.Arrived</td>
+											<td>@order.Paid</td>
+										</tr>
+									</table>
 									<tr>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>User Id</th>
+										<h2>Actions</h2>
+										<h3>
+											<button id="login-submit" type="submit" class="btn btn-primary btn-block">Confirm order</button>
+										</h3>
 									</tr>
-									<tr>
-										<td>@order.FirstName</td>
-										<td>@order.LastName</td>
-										<td>@order.UserId</td>
-									</tr>
-								</table>
-								<table style="width:100%">
-									<tr>
-										<th>Order Date</th>
-										<th>Item Id</th>
-										<th>Quantity</th>
-										<th>Size</th>
-										<th>Price</th>
-									</tr>
-									<tr>
-										<td>@order.OrderDate</td>
-										<td>@order.ItemId</td>
-										<td>@order.Quantity</td>
-										<td>@order.Size</td>
-										<td>@order.Price</td>
-									</tr>
-								</table>
-								<table style="width:100%">
-									<tr>
-										<th>Country</th>
-										<th>Province</th>
-										<th>City</th>
-										<th>Zip</th>
-										<th>Address</th>
-									</tr>
-									<tr>
-										<td>@order.Country</td>
-										<td>@order.Province</td>
-										<td>@order.City</td>
-										<td>@order.Zip</td>
-										<td>@order.Address</td>
-									</tr>
-								</table>
-								<table style="width:100%">
-									<tr>
-										<th>Confirmed</th>
-										<th>Shipped</th>
-										<th>Arrived</th>
-										<th>Paid</th>
-									</tr>
-									<tr>
-										<td>@order.Confirmed</td>
-										<td>@order.Shipped</td>
-										<td>@order.Arrived</td>
-										<td>@order.Paid</td>
-									</tr>
-								</table>
-								<tr>
-									<h2>Actions</h2>
-									<h3>
-										<button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
-										<a asp-area="admin" asp-action="manageuserorders" asp-controller="user" asp-route-id="@order.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order</a>
-										<a asp-area="admin" asp-action="confirmShip" asp-controller="user" asp-route-id="@order.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order shipped</a>
-										<a asp-area="admin" asp-action="confirmArrive" asp-controller="user" asp-route-id="@order.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order arrival</a>
-										<a asp-area="admin" asp-action="confirmPaid" asp-controller="user" asp-route-id="@order.Id" class="btn btn-block btn-outline-success btn-xs">Confirm user paid</a>
-									</h3>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+								</tbody>
+							</table>
+						</div>
+					</form>
 				}
-				</form>
 			</div>
 
 		</div>

@@ -28,8 +28,6 @@ namespace AprioriSite.Core.Models
         [StringLength(10)]
         public string Size { get; set; }
 
-        public string? CustomPicture { get; set; }
-
         [Required]
         public decimal Price { get; set; }
 
