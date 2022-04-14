@@ -21,10 +21,27 @@ namespace AprioriSite.Core.Services
             context = _context;
         }
 
+        public async Task<bool> ConfirmOrder(UserOrdersViewModel model) 
+        {
+            bool result = false;
+            var user = await repo.GetByIdAsync<UserOrdersViewModel>(model.Id);
+
+            if (user != null)
+            {
+                user.Confirmed = true;
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+
+            return result;
+        }
+
         public void AddItem(AddItemViewModel model)
         {
             repo.AddAsync(new Item()
             {
+                AllowSize = model.AllowSize,
                 Label = model.Label,
                 Price = model.Price,
                 Description = model.Description,
@@ -126,6 +143,7 @@ namespace AprioriSite.Core.Services
             {
                 var model = context.Transactions.Select(u => new UserOrdersViewModel()
                 {
+                    Id = u.Id,
                     Size = u.Size,
                     OrderDate = u.OrderDate,
                     FirstName = u.FirstName,
@@ -152,6 +170,7 @@ namespace AprioriSite.Core.Services
             {
                 var model = context.Transactions.Select(u => new UserOrdersViewModel()
                 {
+                    Id = new Guid(),
                     Size = "Error",
                     OrderDate = "Error",
                     FirstName = "Error",
@@ -194,6 +213,22 @@ namespace AprioriSite.Core.Services
             {
                 user.Email = model.Email;
                 user.UserName = model.Username;
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+
+            return result;
+        }
+
+        public async Task<bool> DeleteUser(UserEditViewModel model)
+        {
+            bool result = false;
+            var user = await repo.GetByIdAsync<IdentityUser>(model.Id);
+
+            if (user != null)
+            {
+                repo.Delete(user);
 
                 await repo.SaveChangesAsync();
                 result = true;

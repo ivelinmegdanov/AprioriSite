@@ -10,6 +10,9 @@ namespace AprioriSite.Core.Models
         public string Label { get; set; }
 
         [Required]
+        public bool AllowSize { get; set; }
+
+        [Required]
         public string PictureUrl { get; set; }
 
         [Required]

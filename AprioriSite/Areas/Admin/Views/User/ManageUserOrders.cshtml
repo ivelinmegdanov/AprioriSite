@@ -26,9 +26,13 @@
 		<div class="col-12">
 			<div class="card">
 				<h1 class="heading"> Manage <span>Users</span> Orders </h1>
-				<h1 class="heading"> Manage <span>Users</span> Orders </h1>
+				<h1 class="heading"> Manage <span>Users</span> Orders</h1>
+				<h2><a asp-action="AdminPanel">Back to Admin Panel</a> </h2>
+				<p></p>
+				  <form id="manageuserorders" method="post">
 				@foreach (var user in Model)
 				{
+					<input type="hidden" name="Id" value="@user.Id" />
 					<div class="users">
 						<table class="table table-hover text-nowrap">
 							<tbody>
@@ -94,16 +98,18 @@
 								<tr>
 									<h2>Actions</h2>
 									<h3>
-										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order</a>
-										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order shipped</a>
-										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order arrival</a>
-										<a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm user paid</a>
+										<button id="login-submit" type="submit" class="btn btn-primary btn-block">Submit</button>
+										<a asp-area="admin" asp-action="manageuserorders" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order</a>
+										<a asp-area="admin" asp-action="confirmShip" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order shipped</a>
+										<a asp-area="admin" asp-action="confirmArrive" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm order arrival</a>
+										<a asp-area="admin" asp-action="confirmPaid" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-success btn-xs">Confirm user paid</a>
 									</h3>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				}
+				</form>
 			</div>
 
 		</div>

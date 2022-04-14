@@ -83,6 +83,28 @@ namespace AprioriSite.Areas.Admin.Controllers
             return Ok();
         }
 
+        public async Task<IActionResult> Delete(string id)
+        {
+            var model = await userService.GetUserForEdit(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(UserEditViewModel model)
+        {
+            if (await userService.DeleteUser(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Success!";
+                return Redirect("/admin/user/adminpanel");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
+            return Ok();
+        }
+
         public async Task<IActionResult> CreateRole()
         {
             //await roleManager.CreateAsync(new IdentityRole()
@@ -98,6 +120,19 @@ namespace AprioriSite.Areas.Admin.Controllers
             var userOrders = await userService.GetAllUserOrders();
 
             return View(userOrders);
+        }
+
+        [HttpPost]
+        public IActionResult ManageUserOrders(UserOrdersViewModel model)
+        {
+            var successfull = userService.ConfirmOrder(model);
+
+            //if (successfull == true) 
+            //{
+            //    return Redirect("/admin/user/adminpanel");
+            //}
+
+            return Redirect("/admin/user/manageuserorders");
         }
     }
 }

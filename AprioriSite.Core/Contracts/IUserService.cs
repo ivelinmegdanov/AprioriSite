@@ -11,6 +11,8 @@ namespace AprioriSite.Core.Constants
 
         Task<bool> UpdateUser(UserEditViewModel model);
 
+        Task<bool> ConfirmOrder(UserOrdersViewModel model);
+
         Task<IEnumerable<UserOrdersViewModel>> GetUserOrders(string id);
 
         Task<IEnumerable<UserOrdersViewModel>> GetAllUserOrders();
@@ -18,5 +20,7 @@ namespace AprioriSite.Core.Constants
         Task<ApplicationUser> GetUserById(string id);
 
         void AddItem(AddItemViewModel model);
+
+        Task<bool> DeleteUser(UserEditViewModel model);
     }
 }
