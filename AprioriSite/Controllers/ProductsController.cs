@@ -1,6 +1,7 @@
 ﻿using AprioriSite.Core.Constants;
 using AprioriSite.Core.Contracts;
 using AprioriSite.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AprioriSite.Controllers

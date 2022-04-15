@@ -1,6 +1,7 @@
 ﻿using AprioriSite.Core.Constants;
 using AprioriSite.Core.Contracts;
 using AprioriSite.Core.Models;
+using AprioriSite.Core.Models.ListViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,17 +9,14 @@ namespace AprioriSite.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
-        private readonly RoleManager<IdentityRole> roleManager;
-
-        private readonly UserManager<IdentityUser> userManager;
 
         private readonly IUserService userService;
+        private readonly IProductsService productsService;
 
-        public UserController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IUserService _userService)
+        public UserController(IUserService _userService, IProductsService _productsService)
         {
-            roleManager = _roleManager;
-            userManager = _userManager;
             userService = _userService;
+            productsService = _productsService;
         }
 
         public IActionResult Index()
@@ -153,6 +151,28 @@ namespace AprioriSite.Areas.Admin.Controllers
             {
                 ViewData[MessageConstant.SuccessMessage] = "Success!";
                 return Redirect("/admin/user/emails");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
+            return Ok();
+        }
+
+        public async Task<IActionResult> Items()
+        {
+            var products = productsService.GetAllProducts();
+
+            return View(products);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Items(ProductsListViewModel model)
+        {
+            if (await productsService.DeleteItem(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Success!";
+                return Redirect("/admin/user/items");
             }
             else
             {

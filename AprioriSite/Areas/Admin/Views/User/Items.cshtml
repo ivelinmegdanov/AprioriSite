@@ -1,0 +1,79 @@
+﻿@using AprioriSite.Core.Models.ListViewModels
+@model IEnumerable<ProductsListViewModel>
+@{
+	ViewData["Title"] = "Database Items";
+	Layout = null;
+}
+
+<head>
+	<title>@ViewData["Title"]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="~/css/style.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+
+	<style>
+		table, th, td {
+			text-align: center;
+			border: 1px solid black;
+		}
+	</style>
+
+	<title>User Edit</title>
+</head>
+
+<body>
+	<partial name="_MainMenu" />
+	<div class="row">
+		<h1 class="heading"> Database <span>Items</span> </h1>
+		<h1 class="heading"> Database <span>Items</span> </h1>
+		<div class="users">
+			<div class="users">
+				@foreach (var item in Model)
+				{
+					<form id="items" method="post">
+						<div class="emails">
+							<table class="table table-hover text-nowrap">
+								<input type="hidden" name="Id" value="@item.Id" />
+								<tbody>
+									<img src="@item.ImageUrl" width="90">
+									<table style="width:90%">
+										<tr>
+											<th>Label</th>
+											<th>Price</th>
+											<th>Description</th>
+										</tr>
+										<tr>
+											<td>@item.Label</td>
+											<td>@item.Price</td>
+											<td>@item.Description</td>
+										</tr>
+									</table>
+									<table style="width:90%">
+										<tr>
+											<th>Category</th>
+											<th>Subcategory</th>
+											<th>Allow Size</th>
+										</tr>
+										<tr>
+											<td>@item.Category</td>
+											<td>@item.Subcategory</td>
+											<td>@item.AllowSize</td>
+										</tr>
+									</table>
+								</tbody>
+							</table>
+							<button id="login-submit" type="submit" class="btn btn-primary btn-block">Delete</button>
+						</div>
+					</form>
+				}
+			</div>
+		</div>
+	</div>
+	<script src="~/js/script.js"></script>
+</body>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

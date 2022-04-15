@@ -29,7 +29,10 @@ namespace AprioriSite.Core.Services
                     Label = p.Label,
                     ImageUrl = p.ImageUrl,
                     Price = p.Price,
-                    Category = p.Categoty
+                    Category = p.Categoty,
+                    AllowSize = p.AllowSize,
+                    Description = p.Description,
+                    Subcategory = p.Subcategory
                 });
         }
 
@@ -98,6 +101,33 @@ namespace AprioriSite.Core.Services
             result = true;
 
             await repo.SaveChangesAsync();
+
+            return result;
+        }
+
+        public async Task<bool> DeleteItem(ProductsListViewModel model)
+        {
+            bool result = false;
+            var item = await repo.GetByIdAsync<Item>(model.Id);
+
+            if (item != null)
+            {
+                await repo.AddAsync(new DeletedItem()
+                {
+                    AllowSize = item.AllowSize,
+                    Label = item.Label,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Categoty = item.Categoty,
+                    Subcategory = item.Subcategory,
+                    ImageUrl = item.ImageUrl
+                });
+
+                repo.Delete(item);
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
 
             return result;
         }
