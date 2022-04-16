@@ -180,5 +180,27 @@ namespace AprioriSite.Areas.Admin.Controllers
             }
             return Ok();
         }
+
+        public async Task<IActionResult> DeletedItems()
+        {
+            var products = productsService.GetAllDeletedProducts();
+
+            return View(products);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletedItems(ProductsListViewModel model)
+        {
+            if (await productsService.UndoDeleteItem(model))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "Success!";
+                return Redirect("/admin/user/deleteditems");
+            }
+            else
+            {
+                ViewData[MessageConstant.ErrorMessage] = "Error!";
+            }
+            return Ok();
+        }
     }
 }

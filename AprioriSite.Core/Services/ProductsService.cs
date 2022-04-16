@@ -36,6 +36,22 @@ namespace AprioriSite.Core.Services
                 });
         }
 
+        public IEnumerable<ProductsListViewModel> GetAllDeletedProducts()
+        {
+            return repo.All<DeletedItem>()
+                .Select(p => new ProductsListViewModel()
+                {
+                    Id = p.Id,
+                    Label = p.Label,
+                    ImageUrl = p.ImageUrl,
+                    Price = p.Price,
+                    Category = p.Categoty,
+                    AllowSize = p.AllowSize,
+                    Description = p.Description,
+                    Subcategory = p.Subcategory
+                });
+        }
+
         public ItemsDetailsViewModel? GetItemsById(Guid id)
         {
             return repo.All<Item>()
@@ -113,6 +129,33 @@ namespace AprioriSite.Core.Services
             if (item != null)
             {
                 await repo.AddAsync(new DeletedItem()
+                {
+                    AllowSize = item.AllowSize,
+                    Label = item.Label,
+                    Price = item.Price,
+                    Description = item.Description,
+                    Categoty = item.Categoty,
+                    Subcategory = item.Subcategory,
+                    ImageUrl = item.ImageUrl
+                });
+
+                repo.Delete(item);
+
+                await repo.SaveChangesAsync();
+                result = true;
+            }
+
+            return result;
+        }
+
+        public async Task<bool> UndoDeleteItem(ProductsListViewModel model)
+        {
+            bool result = false;
+            var item = await repo.GetByIdAsync<DeletedItem>(model.Id);
+
+            if (item != null)
+            {
+                await repo.AddAsync(new Item()
                 {
                     AllowSize = item.AllowSize,
                     Label = item.Label,

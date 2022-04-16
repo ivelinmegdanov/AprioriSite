@@ -7,6 +7,8 @@ namespace AprioriSite.Core.Contracts
     {
         IEnumerable<ProductsListViewModel> GetAllProducts();
 
+        IEnumerable<ProductsListViewModel> GetAllDeletedProducts();
+
         ItemsDetailsViewModel? GetItemsById(Guid id);
 
         OrderAndItemViewModel? GetItemsAndOrdersById(Guid id);
@@ -14,5 +16,7 @@ namespace AprioriSite.Core.Contracts
         Task<bool> OrderItem(OrderAndItemViewModel model);
 
         Task<bool> DeleteItem(ProductsListViewModel model);
+
+        Task<bool> UndoDeleteItem(ProductsListViewModel model);
     }
 }
