@@ -49,10 +49,10 @@
 									<option value="4">4</option>
 									<option value="5">5</option>
 									<option value="6">6</option>
-									<option value="6">7</option>
-									<option value="6">8</option>
-									<option value="6">9</option>
-									<option value="6">10</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
 								</select>
 								<span asp-validation-for="OrderItemViewModel.Quantity" class="text-danger"></span>
 						</div>
@@ -184,28 +184,10 @@
 
 	<partial name="_Footer" />
 
-	<script>
-		document.getElementById("OrderDateAsp").value = Date();
-		document.getElementById("PriceAsp").value = parseFloat(document.getElementById("item__price").textContent);
-		let dynamicPrice = document.getElementById("item__price");
-		let itemPrice = parseFloat(dynamicPrice.textContent);
-		document.getElementById("quantity").addEventListener("change", () => {
-			if(document.getElementById("quantity").value > 0 && document.getElementById("quantity").value < 100){
-				dynamicPrice.textContent = (itemPrice * parseFloat(document.getElementById("quantity").value)).toFixed(2) + " $";
-				document.getElementById("PriceAsp").value = parseFloat(document.getElementById("item__price").textContent);
-			}
-		});
-	</script>
-
-	<script>
-		let customImage = window.localStorage.getItem('customImage');
-		document.getElementById("customImage").src = customImage;
-		document.getElementById("CustomImageAsp").value = customImage;
-	</script>
-
 	<!-- REQUIRED SCRIPTS -->
 	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 	<script src="~/js/script.js"></script>
+	<script src="~/js/order.js"></script>
 	<script src="~/plugins/jquery/jquery.min.js"></script>
 	<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="~/plugins/toastr/toastr.min.js"></script>
