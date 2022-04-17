@@ -4,6 +4,7 @@ using AprioriSite.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace AprioriSite.Controllers
 {
@@ -47,6 +48,12 @@ namespace AprioriSite.Controllers
 
         public async Task<IActionResult> EditProfile(string id)
         {
+            if (id != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                ViewData[MessageConstant.SuccessMessage] = "You can only edit your things!";
+                return Redirect("/user/myprofile");
+            }
+
             var model = await userService.GetUserForEdit(id);
 
             return View(model);
@@ -55,6 +62,12 @@ namespace AprioriSite.Controllers
         [HttpPost]
         public async Task<IActionResult> EditProfile(UserEditViewModel model)
         {
+            if (model.Id != User.FindFirstValue(ClaimTypes.NameIdentifier)) 
+            {
+                ViewData[MessageConstant.SuccessMessage] = "You can only edit your things!";
+                return Redirect("/user/myprofile");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
