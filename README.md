@@ -8,7 +8,7 @@ GoogleMaps API\
 EF Core with MSSQL\
 Identity for login and sign up functionality\
 Canvas image editor\
-Javascript HTML & CS
+Javascript HTML & CSS
 
 ## License
 **The website was made for SoftUni (Software University) exam and is not public or never going to be!**
